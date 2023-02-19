@@ -5,8 +5,8 @@ import pandas as pd
 # abrir el archivo. También devuelve un valor booleano que permite identificar si el dataframe
 # es válido y utilizable o no.
 
-def leerCSV(ruta):
-    try:
+def leerCSV(ruta):                                                  
+    try:                                                            #Se tiene un control sobre los problemas que se pueden presentar al intentar abrir el archivo o interactuar con él
         valido=True
         df=pd.read_csv(ruta)
         primeraFila=df.iloc[1]                                      #Se recuperan los datos del primer registro del archivo
@@ -16,12 +16,12 @@ def leerCSV(ruta):
             print(f"{ruta} es un archivo válido sin modificaciones.")
         elif primeraColumna[:4]=="http" and len(df.columns)==3:     #Se comprueba si el archivo ya tiene las clasificaciones de los canales
             print(f"{ruta} es un archivo válido que ya contiene las clasificaciones.")     
-        else:
-            print(f"{ruta} es archivo que no tiene un formato válido.")
+        else:                                                       #Se detecta si el archivo no presenta errores durante su interacción pero su formato es inválido
+            print(f"{ruta} es un archivo que no tiene un formato válido.")
             valido=False
             df=None
-    except:
-        print(f"{ruta} es archivo que no tiene un formato válido.")
+    except:                                                         #Se detecta si han habido problemas a durante la carga o interacción con el archivo
+        print(f"{ruta} es un archivo que no tiene un formato válido.")
         valido=False
         df=None
     return df, valido
