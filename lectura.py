@@ -13,20 +13,22 @@ def leerCSV(ruta):
         primeraColumna=primeraFila[0]
         segundaColumna=primeraFila[1]
         if segundaColumna[:4]=="http" and len(df.columns)==3:       #Se comprueba si el archivo tiene enlaces en la segunda columna
-            print("Es un archivo sin modificaciones")
+            print(f"{ruta} es un archivo válido sin modificaciones.")
         elif primeraColumna[:4]=="http" and len(df.columns)==3:     #Se comprueba si el archivo ya tiene las clasificaciones de los canales
-            print("El archivo ya contiene las clasificaciones")     
+            print(f"{ruta} es un archivo válido que ya contiene las clasificaciones.")     
         else:
-            print("El archivo no tiene un formato válido.")
-            print("...finalizando programa...")
+            print(f"{ruta} es archivo que no tiene un formato válido.")
             valido=False
             df=None
     except:
-        print("El archivo no tiene un formato válido.")
-        print("...finalizando programa...")
+        print(f"{ruta} es archivo que no tiene un formato válido.")
         valido=False
         df=None
     return df, valido
 
 if __name__=="__main__":
-    leerCSV("suscripciones.csv")
+    df, valido=leerCSV("suscripciones.csv")
+    if valido:
+        print(f"\nEl dataframe recuperado es el siguiente:\n{df}")
+    else:
+        print("\n...finalizando programa...")
