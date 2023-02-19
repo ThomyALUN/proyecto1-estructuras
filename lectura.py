@@ -12,8 +12,6 @@ def leerCSV(ruta):
         primeraFila=df.iloc[1]                                      #Se recuperan los datos del primer registro del archivo
         primeraColumna=primeraFila[0]
         segundaColumna=primeraFila[1]
-        print(segundaColumna)
-        print(len(df.columns))
         if segundaColumna[:4]=="http" and len(df.columns)==3:       #Se comprueba si el archivo tiene enlaces en la segunda columna
             print("Es un archivo sin modificaciones")
         elif primeraColumna[:4]=="http" and len(df.columns)==3:     #Se comprueba si el archivo ya tiene las clasificaciones de los canales
