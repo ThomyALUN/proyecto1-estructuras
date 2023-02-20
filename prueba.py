@@ -1,25 +1,25 @@
-import pandas as pd 
-sp= pd.read_csv('suscripciones.csv')
-# .head() --> carga las primeras 5 lineas
-#print(suscripciones)
-sp.to_numpy().tolist()
-i='True'
+import pandas as pd
+#.read:csv -> lee el archivo .csv
+suscripciones = pd.read_csv("proyecto1-estructuras\suscripciones.csv")
 listEtiquetas=[]
-listCanales=[]
+diccionarioEtiquetas={}
+#while -> llena una lista con las etiquetas que desea crear el usuario
+i='si'
 print('Crea tus etiquetas')
-while i=='True':
+while i=='si':
         etiquetas = input('Etiqueta : ')
         listEtiquetas.append(etiquetas)
-        print('Si desea agregar otra etiqueta digite True \nSi NO desea agregar otra etiqueta digite False')
+        print('Si desea agregar otra etiqueta digite si \nSi NO desea agregar otra etiqueta digite no')
         i=input('--> ')
-print(listEtiquetas)
+#for -> llena un diccionario con 1 canal por etiqueta (por ahora)
 for i in listEtiquetas:
     print('Elija los canales que desea etiquetar en la etiqueta ',i)
-    print(suscripciones.head())
+    print(suscripciones)
     agregar=int(input('Digite el número del canal que desea agregar a la etiqueta : '))
-    listCanales.append(suscripciones[agregar])
-for i in listEtiquetas:
-    for a in i:
-        print(i,' --> ',a)
-        
+    diccionarioEtiquetas.update({i:suscripciones.iloc[agregar,1:3]})
+#for -> imprime la etiqueta con su respestivo canal (por ahora)
+for i in diccionarioEtiquetas:
+    print(i,'--> ',diccionarioEtiquetas[i])
+
+
 
