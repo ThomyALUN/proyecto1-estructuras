@@ -4,49 +4,34 @@ listEtiquetas=[]
 diccionarioEtiquetas={}
 
 #crea las etiquetas 
-def crearEtiquetas():
-    print('CREA TUS ETIQUETAS')
-    i='si'
-    while i=='si':
-        etiquetas = input('Etiqueta : ')
-        listEtiquetas.append(etiquetas)
-        i=input('¿Desea agregar otra etiqueta? si/no ')
+def crearEtiquetas(nombreEtiqueta):
+    listEtiquetas.append(nombreEtiqueta)
     return listEtiquetas
 
 #modificar las etiquetas
-def modificarEtiquetas():
-    print('MODIFICA TUS ETIQUETAS')
-    print(listEtiquetas)
-    oldEtiqueta=input('Escribe la etiqueta que deseas moficiar : ')
-    newEtiqueta=input('Escribe la nueva etiqueta : ')
+def modificarEtiquetas(oldEtiqueta,newEtiqueta):
     listEtiquetas[listEtiquetas.index(oldEtiqueta)]=newEtiqueta
     return listEtiquetas
 
 #eliminar las etiquetas
-def eliminarEtiquetas():
-    print('ELIMINA TUS ETIQUETAS')
-    print(listEtiquetas)
-    etiqueta=input('Escribe la etiqueta que deseas eliminar : ')
-    listEtiquetas.remove(etiqueta)
+def eliminarEtiquetas(etiquetaEliminar):
+    listEtiquetas.remove(etiquetaEliminar)
     return listEtiquetas
 
 #llenar las etiquetas con los canales
-def llenarEtiquetas():
-    print('ETIQUETA TUS CANALES')
+def llenarEtiquetas(etiqueta,numeros):
     suscripciones=leerCSV("suscripciones.csv")[0]
-    print('Digita los números de los canales que deseas agregar a la etiqueta \n')
-    print(suscripciones)
-    for i in listEtiquetas:
-        agregar=input(f'{i} : ')
-        separarCanales=agregar.split(" ")
-        #convierte la lista de strings a lista de numeros
-        for a in range(len(separarCanales)):
-            separarCanales[a]=int(separarCanales[a])  
+    separarCanales=numeros.split(" ")
+    #convierte la lista de strings a lista de numeros
+    for a in range(len(separarCanales)):
+        separarCanales[a]=int(separarCanales[a])  
         #llena un diccionario -> etiqueta(key) : canales(valores)
-        diccionarioEtiquetas.update({i:suscripciones.loc[separarCanales,('URL del canal','Título del canal')]})
+    diccionarioEtiquetas.update({etiqueta:suscripciones.loc[separarCanales,('URL del canal','Título del canal')]})
     return diccionarioEtiquetas
 
-print(crearEtiquetas())
-print(modificarEtiquetas())
-print(eliminarEtiquetas())
-print(llenarEtiquetas())
+if __name__=="__main__":     
+    print(crearEtiquetas('salud'))
+    print(crearEtiquetas('cosina'))
+    print(modificarEtiquetas('cosina','cocina'))
+    print(eliminarEtiquetas('salud'))
+    print(llenarEtiquetas('cocina','1 2 3 4'))
