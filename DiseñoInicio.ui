@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>1037</width>
-    <height>589</height>
+    <height>554</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -96,7 +96,7 @@ border: 1px solid black;
       </property>
       <property name="styleSheet">
        <string notr="true">QPushButton#cerrar{
-background-color: rgb(218, 56, 59);
+background-color: rgb(255, 0, 0);
 border-radius:6px;
 border: 1px solid black;
 font: 11pt &quot;MS Shell Dlg 2&quot;;
@@ -127,7 +127,7 @@ background-color: rgb(57, 57, 57);
 font: 87 10pt &quot;Arial Black&quot;;
 border-radius:15px;
 font: 8pt &quot;Gill Sans Ultra Bold&quot;;
-color:black;
+color:white;
 }</string>
      </property>
      <property name="text">
@@ -145,7 +145,7 @@ color:black;
      </property>
      <property name="styleSheet">
       <string notr="true">font: 14pt &quot;Lucida Console&quot;;
-color:white;
+color:gray;
 font: 90 20pt &quot;Rockwell Extra Bold&quot;;</string>
      </property>
      <property name="text">
