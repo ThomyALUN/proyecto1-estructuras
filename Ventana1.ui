@@ -118,7 +118,7 @@ font: 11pt &quot;MS Shell Dlg 2&quot;;
        </rect>
       </property>
       <property name="styleSheet">
-       <string notr="true">border-image: url(:/Iconos/Icono youtube.png);</string>
+       <string notr="true">border-image: url(:/icono youtube/Icono youtube.png);</string>
       </property>
       <property name="text">
        <string/>
@@ -284,7 +284,7 @@ p, li { white-space: pre-wrap; }
   </customwidget>
  </customwidgets>
  <resources>
-  <include location="../../../OneDrive/Escritorio/Interfaz/imagen.qrc"/>
+  <include location="imagen.qrc"/>
  </resources>
  <connections/>
 </ui>
