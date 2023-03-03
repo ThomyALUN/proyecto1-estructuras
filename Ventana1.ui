@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1037</width>
-    <height>589</height>
+    <width>1066</width>
+    <height>587</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -285,7 +285,6 @@ p, li { white-space: pre-wrap; }
  </customwidgets>
  <resources>
   <include location="../../../OneDrive/Escritorio/Interfaz/imagen.qrc"/>
-  <include location="Iconos.qrc"/>
  </resources>
  <connections/>
 </ui>

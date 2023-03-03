@@ -14,7 +14,7 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
-        MainWindow.resize(1037, 554)
+        MainWindow.resize(1037, 550)
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setObjectName("centralwidget")
         self.widget = QtWidgets.QWidget(self.centralwidget)
@@ -79,9 +79,8 @@ class Ui_MainWindow(object):
 "font: 90 20pt \"Rockwell Extra Bold\";")
         self.label_2.setObjectName("label_2")
         self.label_3 = QtWidgets.QLabel(self.widget)
-        self.label_3.setGeometry(QtCore.QRect(393, 110, 231, 241))
-        self.label_3.setStyleSheet("\n"
-"border-image: url(:/prefijoNuevo/Icono youtube.png);")
+        self.label_3.setGeometry(QtCore.QRect(400, 120, 221, 211))
+        self.label_3.setStyleSheet("border-image: url(:/icono youtube/Icono youtube.png);")
         self.label_3.setText("")
         self.label_3.setObjectName("label_3")
         MainWindow.setCentralWidget(self.centralwidget)
@@ -99,7 +98,7 @@ class Ui_MainWindow(object):
         self.cerrar.setText(_translate("MainWindow", "x"))
         self.BEnviarFoto.setText(_translate("MainWindow", "INICIAR"))
         self.label_2.setText(_translate("MainWindow", "CLASIFICADOR"))
-import imagen_rc
+import imagen
 
 
 if __name__ == "__main__":

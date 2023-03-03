@@ -1,5 +1,5 @@
 <RCC>
-  <qresource prefix="Iconos">
+  <qresource prefix="icono youtube">
     <file>Icono youtube.png</file>
   </qresource>
 </RCC>
