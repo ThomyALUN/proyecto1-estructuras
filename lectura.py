@@ -11,6 +11,9 @@ import pandas as pd
 def leerCSV(ruta):                                                  
     try:                                                            #Se tiene un control sobre los problemas que se pueden presentar al intentar abrir el archivo o interactuar con él
         valido=True
+        extension=ruta[-3:]                                         #Se obtiene la extensión del archivo
+        if extension!="csv":
+            raise RuntimeError
         df=pd.read_csv(ruta)
         primeraFila=df.iloc[1]                                      #Se recuperan los datos del primer registro del archivo
         primeraColumna=primeraFila[0]
@@ -28,8 +31,13 @@ def leerCSV(ruta):
             valido=False
             df=None
             tipo=None
-    except:                                                         #Se detecta si han habido problemas a durante la carga o interacción con el archivo
-        print(f"Error: {ruta} es un archivo que no tiene un formato válido.")
+    except FileNotFoundError:                                                         #Se detecta si han habido problemas a durante la carga o interacción con el archivo
+        print(f"El archivo: {ruta} no existe.")
+        valido=False
+        df=None
+        tipo=None
+    except:
+        print(f"Hubo un error durante la ejecución")
         valido=False
         df=None
         tipo=None
