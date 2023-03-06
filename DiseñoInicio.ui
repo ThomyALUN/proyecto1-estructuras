@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>MainWindow</class>
- <widget class="QMainWindow" name="MainWindow">
+ <class>Inicio</class>
+ <widget class="QMainWindow" name="Inicio">
   <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1037</width>
-    <height>550</height>
+    <width>1057</width>
+    <height>558</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -108,7 +108,7 @@ font: 11pt &quot;MS Shell Dlg 2&quot;;
       </property>
      </widget>
     </widget>
-    <widget class="QPushButton" name="BEnviarFoto">
+    <widget class="QPushButton" name="BIniciar">
      <property name="geometry">
       <rect>
        <x>440</x>
@@ -121,7 +121,7 @@ font: 11pt &quot;MS Shell Dlg 2&quot;;
       <cursorShape>PointingHandCursor</cursorShape>
      </property>
      <property name="styleSheet">
-      <string notr="true">QPushButton#BEnviarFoto{
+      <string notr="true">QPushButton#BIniciar{
 background-color: rgb(52, 107, 98);
 background-color: rgb(57, 57, 57);
 font: 87 10pt &quot;Arial Black&quot;;
