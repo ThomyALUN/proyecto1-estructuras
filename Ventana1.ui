@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1034</width>
+    <width>1026</width>
     <height>560</height>
    </rect>
   </property>
@@ -53,7 +53,7 @@ border-top-right-radius:20px;
        <widget class="QPushButton" name="min_2">
         <property name="geometry">
          <rect>
-          <x>900</x>
+          <x>910</x>
           <y>10</y>
           <width>41</width>
           <height>21</height>
@@ -79,7 +79,7 @@ border: 1px solid black;
        <widget class="QPushButton" name="cerrar_2">
         <property name="geometry">
          <rect>
-          <x>950</x>
+          <x>960</x>
           <y>10</y>
           <width>41</width>
           <height>21</height>
