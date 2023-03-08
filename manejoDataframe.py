@@ -1,11 +1,6 @@
 import pandas as pd
 
-from archivoAccesible import *
-
-def mostrarDiccEtq(dicc):
-    for etiqueta in dicc.keys():
-        subtabla=dicc[etiqueta]
-        print(f"La subtabla de la etiqueta {etiqueta} es:\n{subtabla}\n")
+from funciones import *
 
 class ManejoDF():
 

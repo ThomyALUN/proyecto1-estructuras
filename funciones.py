@@ -1,6 +1,6 @@
+# Devuelve un booleano si se puede acceder al archivo seleccionado por el usuario
 def archivoAccesible(ruta):
     accesible=True
-
     try:
         file = open(ruta, "r", encoding="utf-8")
         content = file.read()
@@ -21,3 +21,9 @@ def archivoAccesible(ruta):
         print("El archivo se leyó correctamente")
     
     return accesible
+
+# Sirve para mostrar por consola el diccionario de las etiquetas más fácilmente
+def mostrarDiccEtq(dicc):
+    for etiqueta in dicc.keys():
+        subtabla=dicc[etiqueta]
+        print(f"La subtabla de la etiqueta {etiqueta} es:\n{subtabla}\n")
