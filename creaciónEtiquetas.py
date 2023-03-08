@@ -31,7 +31,6 @@ def eliminarEtiquetas(etiquetaEliminar):
         listEtiquetas.remove(etiquetaEliminar)
     else:
         print('La etiqueta que desea eliminar no existe')
-        pass
     return listEtiquetas
 
 #llenar las etiquetas con los canales
