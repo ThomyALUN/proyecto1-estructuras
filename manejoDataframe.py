@@ -264,3 +264,5 @@ if __name__=="__main__":
     print(objetoDF.listaCanales)
 
     mostrarDiccEtq(objetoDF.diccEtiquetas)
+
+    objetoDF.crearCSV()
