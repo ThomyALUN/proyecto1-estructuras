@@ -1,7 +1,7 @@
 # Clasificador de canales de Youtube
 En este repositorio se almacenará una pequeña aplicación para clasificar los canales de Youtube a los cuales se esta suscrito.
 
-**1.** Para iniciar a trabajar en el proyecto es necesario instalar python 3.8.8 y guardar la ruta de instalación
+**1.** Para iniciar a trabajar en el proyecto es necesario instalar python 3.8.X y guardar la ruta de instalación
 
 **2.** Lo siguiente es crear una carpeta para el proyecto y para el entorno virtual
 
