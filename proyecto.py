@@ -1,10 +1,14 @@
 import sys
-from PyQt5.QtWidgets import QWidget, QApplication, QMainWindow, QPushButton
+import os
+from PyQt5.QtWidgets import QWidget, QApplication, QMainWindow, QPushButton, QFileDialog
 from PyQt5.uic import loadUi
 from PyQt5.QtCore import *
 from PyQt5.QtGui import *
 from imagen import *
-from PyQt5 import QtCore, QtGui, QtWidgets 
+from PyQt5 import QtCore, QtGui, QtWidgets
+from PyQt5.QtMultimedia import *
+from PyQt5.QtMultimediaWidgets import *
+import cv2
 
 class Window1(QMainWindow):
     def __init__(self):
@@ -15,6 +19,8 @@ class Window1(QMainWindow):
         self.setWindowTitle('Ventana Inicio')
         self.frame.mouseMoveEvent = self.moveWindow
         self.BIniciar.clicked.connect(self.mostrarVentana1)
+        
+        
         
     def moveWindow(self,e):
         if e.buttons() == Qt.LeftButton:
@@ -44,14 +50,6 @@ class Window1(QMainWindow):
         self.ventana1.show()
         
         self.close()
-        '''self.widget_2 = QtWidgets.QStackedWidget()
-        self.widget_2.addWidget(self.ventana1)
-        self.widget_2.setFixedHeight(widget.height())  # Configurar el mismo alto que widget
-        self.widget_2.setFixedWidth(widget.width())   # Configurar el mismo ancho que widget
-
-        self.widget_2.setWindowFlag(QtCore.Qt.FramelessWindowHint)
-        self.widget_2.setAttribute(QtCore.Qt.WA_TranslucentBackground)
-        self.widget_2.show()  # Agregar esta línea para mostrar el QStackedWidget'''
 
 class Ventana1(QMainWindow):
     def __init__(self):
@@ -61,18 +59,42 @@ class Ventana1(QMainWindow):
         self.cerrar_2.clicked.connect(window1.exit)
         self.min_2.clicked.connect(self.minimizar)
         self.frame_2.mouseMoveEvent = self.moveWindow
+        self.BSubir.clicked.connect(self.seleccionarFoto)
+        self.BVer.clicked.connect(self.play)
         
-    def minimizar(self):        
+        geometry = self.widget.geometry()
+        # creamos el nuevo QVideoWidget
+        self.videoWidget = QVideoWidget()
+
+        # establecemos la geometría del nuevo QVideoWidget
+        self.videoWidget.setGeometry(geometry)
+        self.player = QMediaPlayer(self)
+        media = QMediaContent(QUrl.fromLocalFile("Tutorial Google Takeout.mp4"))
+        self.player.setMedia(media)
+        self.player.setVideoOutput(self.videoWidget)
+
+    def seleccionarFoto(self):
+        dirPath = os.getcwd()  # Directorio de la carpeta actual
+        # Buscar archivo.csv
+        ruta, _ = QFileDialog.getOpenFileName(self, "Buscar Archivo...", "C:\\", "Wanted Files (*.csv)")
+        # src = cv2.imread(ruta, cv2.IMREAD_UNCHANGED) #Lee la ruta de la foto
+        self.rutaImagen = ruta
+        print(self.rutaImagen)
+
+    def minimizar(self):
         self.showMinimized()
-    
-    def moveWindow(self,e):
+
+    def moveWindow(self, e):
         if e.buttons() == Qt.LeftButton:
-            self.move(self.pos()+e.globalPos()-self.clickPosition)
+            self.move(self.pos() + e.globalPos() - self.clickPosition)
             self.clickPosition = e.globalPos()
             e.accept()
-            
+
     def mousePressEvent(self, event):
-        self.clickPosition = event.globalPos()        
+        self.clickPosition = event.globalPos()
+
+    def play(self):
+        self.player.play()      
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)

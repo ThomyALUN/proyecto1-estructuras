@@ -138,10 +138,10 @@ font: 70 15pt &quot;Rockwell Extra Bold&quot;;</string>
         </property>
        </widget>
       </widget>
-      <widget class="QPushButton" name="BEnviarFoto">
+      <widget class="QPushButton" name="BSubir">
        <property name="geometry">
         <rect>
-         <x>220</x>
+         <x>180</x>
          <y>370</y>
          <width>151</width>
          <height>61</height>
@@ -151,7 +151,7 @@ font: 70 15pt &quot;Rockwell Extra Bold&quot;;</string>
         <cursorShape>PointingHandCursor</cursorShape>
        </property>
        <property name="styleSheet">
-        <string notr="true">QPushButton#BEnviarFoto{
+        <string notr="true">QPushButton#BSubir{
 background-color: rgb(52, 107, 98);
 background-color: rgb(57, 57, 57);
 font: 87 10pt &quot;Arial Black&quot;;
@@ -263,6 +263,42 @@ p, li { white-space: pre-wrap; }
        </property>
        <property name="text">
         <string>TextLabel</string>
+       </property>
+      </widget>
+      <widget class="QWidget" name="widget" native="true">
+       <property name="geometry">
+        <rect>
+         <x>460</x>
+         <y>70</y>
+         <width>411</width>
+         <height>361</height>
+        </rect>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="BVer">
+       <property name="geometry">
+        <rect>
+         <x>340</x>
+         <y>380</y>
+         <width>71</width>
+         <height>41</height>
+        </rect>
+       </property>
+       <property name="cursor">
+        <cursorShape>PointingHandCursor</cursorShape>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QPushButton#BVer{
+background-color: rgb(52, 107, 98);
+background-color: rgb(57, 57, 57);
+font: 87 10pt &quot;Arial Black&quot;;
+border-radius:10px;
+font: 8pt &quot;Gill Sans Ultra Bold&quot;;
+color:white;
+}</string>
+       </property>
+       <property name="text">
+        <string>VER</string>
        </property>
       </widget>
      </widget>
