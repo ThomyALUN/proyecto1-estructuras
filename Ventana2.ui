@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>1022</width>
-    <height>544</height>
+    <height>567</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -20,7 +20,7 @@
       <x>10</x>
       <y>10</y>
       <width>1008</width>
-      <height>522</height>
+      <height>521</height>
      </rect>
     </property>
     <property name="cursor">
@@ -144,7 +144,7 @@ font: 70 15pt &quot;Rockwell Extra Bold&quot;;</string>
       </property>
      </widget>
     </widget>
-    <widget class="QPushButton" name="BSubir">
+    <widget class="QPushButton" name="BCrear">
      <property name="geometry">
       <rect>
        <x>200</x>
@@ -157,7 +157,7 @@ font: 70 15pt &quot;Rockwell Extra Bold&quot;;</string>
       <cursorShape>PointingHandCursor</cursorShape>
      </property>
      <property name="styleSheet">
-      <string notr="true">QPushButton#BSubir{
+      <string notr="true">QPushButton#BCrear{
 
 background-color: rgb(57, 57, 57);
 

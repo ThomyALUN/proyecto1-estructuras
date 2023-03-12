@@ -1,6 +1,6 @@
 import sys
 import os
-from PyQt5.QtWidgets import QWidget, QApplication, QMainWindow, QPushButton, QFileDialog,QVBoxLayout
+from PyQt5.QtWidgets import QWidget, QApplication, QMainWindow, QPushButton, QFileDialog,QVBoxLayout, QDialog
 from PyQt5.uic import loadUi
 from PyQt5.QtCore import *
 from PyQt5.QtGui import *
@@ -8,6 +8,7 @@ from imagen import *
 from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtMultimedia import *
 from PyQt5.QtMultimediaWidgets import *
+from manejoDataframe import *
 import cv2
 
 class Window1(QMainWindow):
@@ -51,6 +52,7 @@ class Window1(QMainWindow):
         
         self.close()
 
+
 class Ventana1(QMainWindow):
     def __init__(self):
         super().__init__()
@@ -59,7 +61,7 @@ class Ventana1(QMainWindow):
         self.cerrar_2.clicked.connect(window1.exit)
         self.min_2.clicked.connect(self.minimizar)
         self.frame_2.mouseMoveEvent = self.moveWindow
-        self.BSubir.clicked.connect(self.seleccionarFoto)
+        self.BSubir.clicked.connect(self.seleccionarArchivo)
         self.BReproducir.clicked.connect(self.play)
             
         
@@ -79,17 +81,24 @@ class Ventana1(QMainWindow):
         self.player.setVideoOutput(self.videoWidget)
         
 
-    def seleccionarFoto(self):
+    def seleccionarArchivo(self):
         dirPath = os.getcwd()  # Directorio de la carpeta actual
         # Buscar archivo.csv
         ruta, _ = QFileDialog.getOpenFileName(self, "Buscar Archivo...", "C:\\", "Wanted Files (*.csv)")
         # src = cv2.imread(ruta, cv2.IMREAD_UNCHANGED) #Lee la ruta de la foto
-        self.rutaImagen = ruta
-        print(self.rutaImagen)
-        self.boolean = len(self.rutaImagen)!= 0
-        print(self.boolean)
-        if self.boolean == True:
-            self.mostrarVentana1()
+        self.rutaCSV = ruta
+        self.controladorDf = ManejoDF(self.rutaCSV)
+        #Devuelve la excepción que hay en ManejoDF
+        self.mensaje = self.controladorDf.leerCSV(ruta)
+        if self.mensaje != None:
+            self.mostrarAdvertencia()
+            
+        else:
+           self.mostrarVentana2()
+            
+            
+        print(self.rutaCSV)
+        
     
     def minimizar(self):
         self.showMinimized()
@@ -110,23 +119,31 @@ class Ventana1(QMainWindow):
         self.player.play()
         self.videoWidget.show()   
         
-    def mostrarVentana1(self):
-        self.ventana2 = Ventana2()
+    def mostrarVentana2(self):
+        self.ventana2 = Ventana2(self.controladorDf)
         self.ventana2.raise_()
         self.ventana2.setWindowFlag(QtCore.Qt.FramelessWindowHint)
         self.ventana2.setAttribute(QtCore.Qt.WA_TranslucentBackground)
         self.ventana2.show()
-        self.close()   
-            
+        self.close() 
+        self.player.stop()
+
+    def mostrarAdvertencia(self):
+        self.advertencia = Advertencia(self.mensaje)
+        self.advertencia.show()
+        
+
+                    
 class Ventana2(QMainWindow):
-    def __init__(self):
+    def __init__(self,controladorDf):
         super().__init__()
         loadUi("Ventana2.ui", self)
         self.setWindowTitle('Ventana 2')
         self.cerrar_3.clicked.connect(window1.exit)
         self.min_3.clicked.connect(self.minimizar)
         self.frame_3.mouseMoveEvent = self.moveWindow
-        #self.BCrear.clicked.connect(self.seleccionarFoto)
+        self.BCrear.clicked.connect(self.crearEtiqueta)
+        self.controladorDf = controladorDf
         #self.BModificar.clicked.connect(self.play)
 
     def minimizar(self):
@@ -139,8 +156,81 @@ class Ventana2(QMainWindow):
             e.accept()
 
     def mousePressEvent(self, event):
-        self.clickPosition = event.globalPos()        
+        self.clickPosition = event.globalPos()     
     
+    def crearEtiqueta(self):
+        DialogEtiquetas(self.controladorDf).show()
+
+                   
+class DialogEtiquetas(QDialog):
+    def __init__(self,controladorDf):
+        super(DialogEtiquetas,self).__init__()
+        loadUi("DialogEtiquetas.ui", self)
+        self.cerrar_4.clicked.connect(self.ocultar)
+        self.min_4.clicked.connect(self.minimizar)
+        self.frame_4.mouseMoveEvent = self.moveWindow
+        self.setWindowFlag(Qt.FramelessWindowHint)
+        self.setAttribute(QtCore.Qt.WA_TranslucentBackground)
+        self.controladorDf = controladorDf
+        self.BAceptar.clicked.connect(self.crearEtiqueta)
+        
+    def moveWindow(self,e):
+        if e.buttons() == Qt.LeftButton:
+            self.move(self.pos()+e.globalPos()-self.clickPosition)
+            self.clickPosition = e.globalPos()
+            e.accept()
+
+    def mousePressEvent(self, event):
+        self.clickPosition = event.globalPos()
+    
+    def keyPressEvent(self, qKeyEvent):
+        if qKeyEvent.key() == QtCore.Qt.Key_Return:
+            self.gui()
+
+    def ocultar(self):
+        self.close()
+    
+    def minimizar(self):        
+        self.showMinimized()
+    
+    def crearEtiqueta(self):
+        self.etiqueta = self.lineEdit.text()
+        mensaje = self.controladorDf.crearEtiqueta(self.etiqueta)
+        if mensaje != None:
+            self.advertencia = Advertencia(mensaje)
+            self.advertencia.show()
+            
+                    
+
+
+        
+class Advertencia(QDialog):
+    def __init__(self,mensaje):
+        super(Advertencia,self).__init__()
+        loadUi("Advertencia.ui", self)
+        self.cerrar_5.clicked.connect(self.ocultar)
+        self.setWindowFlag(Qt.FramelessWindowHint)
+        self.setAttribute(QtCore.Qt.WA_TranslucentBackground)
+        self.widget.mouseMoveEvent = self.moveWindow
+        self.label_6.setText(mensaje)
+
+    def moveWindow(self,e):
+        if e.buttons() == Qt.LeftButton:
+            self.move(self.pos()+e.globalPos()-self.clickPosition)
+            self.clickPosition = e.globalPos()
+            e.accept()
+                
+    def mousePressEvent(self, event):
+        self.clickPosition = event.globalPos()
+    
+    def keyPressEvent(self, qKeyEvent):
+        if qKeyEvent.key() == QtCore.Qt.Key_Return:
+            self.gui()
+
+    def ocultar(self):
+        self.close()
+    
+           
 if __name__ == '__main__':
     app = QApplication(sys.argv)
     window1 = Window1()
