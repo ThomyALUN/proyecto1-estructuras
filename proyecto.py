@@ -1,6 +1,6 @@
 import sys
 import os
-from PyQt5.QtWidgets import QWidget, QApplication, QMainWindow, QPushButton, QFileDialog
+from PyQt5.QtWidgets import QWidget, QApplication, QMainWindow, QPushButton, QFileDialog,QVBoxLayout
 from PyQt5.uic import loadUi
 from PyQt5.QtCore import *
 from PyQt5.QtGui import *
@@ -63,15 +63,22 @@ class Ventana1(QMainWindow):
         self.BVer.clicked.connect(self.play)
         
         geometry = self.widget.geometry()
+        posicion = self.widget.pos()
+        print(posicion)
+        
         # creamos el nuevo QVideoWidget
         self.videoWidget = QVideoWidget()
-
         # establecemos la geometría del nuevo QVideoWidget
         self.videoWidget.setGeometry(geometry)
+        mainLayout = QVBoxLayout()
+        mainLayout.setGeometry(geometry)
+        mainLayout.addWidget(self.videoWidget)
         self.player = QMediaPlayer(self)
         media = QMediaContent(QUrl.fromLocalFile("Tutorial Google Takeout.mp4"))
         self.player.setMedia(media)
         self.player.setVideoOutput(self.videoWidget)
+        
+        
 
     def seleccionarFoto(self):
         dirPath = os.getcwd()  # Directorio de la carpeta actual
@@ -94,7 +101,9 @@ class Ventana1(QMainWindow):
         self.clickPosition = event.globalPos()
 
     def play(self):
-        self.player.play()      
+        self.videoWidget.move(629,120)
+        self.player.play()
+        self.videoWidget.show()      
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)

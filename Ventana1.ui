@@ -274,6 +274,9 @@ p, li { white-space: pre-wrap; }
          <height>361</height>
         </rect>
        </property>
+       <property name="styleSheet">
+        <string notr="true"/>
+       </property>
       </widget>
       <widget class="QPushButton" name="BVer">
        <property name="geometry">
