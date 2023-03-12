@@ -1,0 +1,275 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1023</width>
+    <height>545</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <widget class="QWidget" name="widget_2" native="true">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>10</y>
+      <width>1008</width>
+      <height>522</height>
+     </rect>
+    </property>
+    <property name="cursor">
+     <cursorShape>ArrowCursor</cursorShape>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QWidget#widget_2{
+
+background-color: rgb(6, 6, 6);
+border-radius:20px;
+}</string>
+    </property>
+    <widget class="QFrame" name="frame_2">
+     <property name="geometry">
+      <rect>
+       <x>0</x>
+       <y>0</y>
+       <width>1001</width>
+       <height>51</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QFrame#frame_2{
+	background-color: rgb(6, 6, 6);
+border-top-left-radius:20px;
+border-top-right-radius:20px;
+
+}</string>
+     </property>
+     <property name="frameShape">
+      <enum>QFrame::StyledPanel</enum>
+     </property>
+     <property name="frameShadow">
+      <enum>QFrame::Raised</enum>
+     </property>
+     <widget class="QPushButton" name="min_2">
+      <property name="geometry">
+       <rect>
+        <x>910</x>
+        <y>10</y>
+        <width>41</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="cursor">
+       <cursorShape>PointingHandCursor</cursorShape>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton#min_2{
+	background-color: rgb(208, 208, 208);
+font: 16pt &quot;MS Shell Dlg 2&quot;;
+border-radius:6px;
+border: 1px solid black;
+
+
+}</string>
+      </property>
+      <property name="text">
+       <string>-</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="cerrar_2">
+      <property name="geometry">
+       <rect>
+        <x>960</x>
+        <y>10</y>
+        <width>41</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="cursor">
+       <cursorShape>PointingHandCursor</cursorShape>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton#cerrar_2{
+
+background-color: rgb(255, 0, 0);
+border-radius:6px;
+border: 1px solid black;
+font: 11pt &quot;MS Shell Dlg 2&quot;;
+
+}</string>
+      </property>
+      <property name="text">
+       <string>x</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_3">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>10</y>
+        <width>41</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">border-image: url(:/Iconos/Icono youtube.png);</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_2">
+      <property name="geometry">
+       <rect>
+        <x>70</x>
+        <y>20</y>
+        <width>181</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">font: 14pt &quot;Lucida Console&quot;;
+color:gray
+;
+font: 70 15pt &quot;Rockwell Extra Bold&quot;;</string>
+      </property>
+      <property name="text">
+       <string>CLASIFICADOR</string>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QPushButton" name="BSubir">
+     <property name="geometry">
+      <rect>
+       <x>200</x>
+       <y>120</y>
+       <width>241</width>
+       <height>101</height>
+      </rect>
+     </property>
+     <property name="cursor">
+      <cursorShape>PointingHandCursor</cursorShape>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QPushButton#BSubir{
+
+background-color: rgb(57, 57, 57);
+
+border-radius:15px;
+
+font: 70 20pt &quot;Rockwell Extra Bold&quot;;
+color:white;
+}</string>
+     </property>
+     <property name="text">
+      <string>CREAR</string>
+     </property>
+    </widget>
+    <widget class="Line" name="line">
+     <property name="geometry">
+      <rect>
+       <x>170</x>
+       <y>110</y>
+       <width>20</width>
+       <height>211</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: rgb(6, 6, 6);</string>
+     </property>
+     <property name="orientation">
+      <enum>Qt::Vertical</enum>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="BModificar">
+     <property name="geometry">
+      <rect>
+       <x>540</x>
+       <y>120</y>
+       <width>251</width>
+       <height>101</height>
+      </rect>
+     </property>
+     <property name="cursor">
+      <cursorShape>PointingHandCursor</cursorShape>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QPushButton#BModificar{
+background-color: rgb(52, 107, 98);
+background-color: rgb(57, 57, 57);
+border-radius:15px;
+font: 70 20pt &quot;Rockwell Extra Bold&quot;;
+color:white;
+}</string>
+     </property>
+     <property name="text">
+      <string>MODIFICAR</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="BEliminar">
+     <property name="geometry">
+      <rect>
+       <x>200</x>
+       <y>300</y>
+       <width>241</width>
+       <height>101</height>
+      </rect>
+     </property>
+     <property name="cursor">
+      <cursorShape>PointingHandCursor</cursorShape>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QPushButton#BEliminar{
+background-color: rgb(52, 107, 98);
+background-color: rgb(57, 57, 57);
+font: 87 10pt &quot;Arial Black&quot;;
+border-radius:15px;
+font: 70 20pt &quot;Rockwell Extra Bold&quot;;
+color:white;
+}</string>
+     </property>
+     <property name="text">
+      <string>ELIMINAR</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="BVer">
+     <property name="geometry">
+      <rect>
+       <x>540</x>
+       <y>300</y>
+       <width>241</width>
+       <height>101</height>
+      </rect>
+     </property>
+     <property name="cursor">
+      <cursorShape>PointingHandCursor</cursorShape>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QPushButton#BVer{
+background-color: rgb(52, 107, 98);
+background-color: rgb(57, 57, 57);
+font: 87 10pt &quot;Arial Black&quot;;
+border-radius:15px;
+font: 70 20pt &quot;Rockwell Extra Bold&quot;;
+color:white;
+}</string>
+     </property>
+     <property name="text">
+      <string>VER</string>
+     </property>
+    </widget>
+   </widget>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+ </widget>
+ <resources>
+  <include location="imagen.qrc"/>
+ </resources>
+ <connections/>
+</ui>

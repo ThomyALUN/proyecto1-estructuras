@@ -141,9 +141,9 @@ font: 70 15pt &quot;Rockwell Extra Bold&quot;;</string>
       <widget class="QPushButton" name="BSubir">
        <property name="geometry">
         <rect>
-         <x>180</x>
+         <x>170</x>
          <y>370</y>
-         <width>151</width>
+         <width>121</width>
          <height>61</height>
         </rect>
        </property>
@@ -167,9 +167,9 @@ color:white;
       <widget class="QTextBrowser" name="textBrowser">
        <property name="geometry">
         <rect>
-         <x>190</x>
+         <x>180</x>
          <y>100</y>
-         <width>221</width>
+         <width>251</width>
          <height>231</height>
         </rect>
        </property>
@@ -183,15 +183,15 @@ font: 16pt &quot;Franklin Gothic Demi Cond&quot;;</string>
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
 p, li { white-space: pre-wrap; }
 &lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Franklin Gothic Demi Cond'; font-size:16pt; font-weight:400; font-style:normal;&quot;&gt;
-&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Para usar el clasificador, primero debes subir un archivo .csv.&lt;/p&gt;
-&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Sï no sabes cómo hacerlo, mira el siguiente tutorial: &lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+&lt;p align=&quot;justify&quot; style=&quot;-qt-paragraph-type:empty; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p align=&quot;center&quot; style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Para usar el clasificador, primero debes subir un archivo .csv.&lt;/p&gt;
+&lt;p align=&quot;center&quot; style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;  Sï no sabes cómo hacerlo, presiona el botón reproducir.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
        </property>
       </widget>
       <widget class="Line" name="line">
        <property name="geometry">
         <rect>
-         <x>173</x>
+         <x>170</x>
          <y>110</y>
          <width>20</width>
          <height>211</height>
@@ -207,7 +207,7 @@ p, li { white-space: pre-wrap; }
       <widget class="Line" name="line_2">
        <property name="geometry">
         <rect>
-         <x>410</x>
+         <x>420</x>
          <y>110</y>
          <width>20</width>
          <height>211</height>
@@ -278,20 +278,20 @@ p, li { white-space: pre-wrap; }
         <string notr="true"/>
        </property>
       </widget>
-      <widget class="QPushButton" name="BVer">
+      <widget class="QPushButton" name="BReproducir">
        <property name="geometry">
         <rect>
-         <x>340</x>
-         <y>380</y>
-         <width>71</width>
-         <height>41</height>
+         <x>320</x>
+         <y>370</y>
+         <width>111</width>
+         <height>61</height>
         </rect>
        </property>
        <property name="cursor">
         <cursorShape>PointingHandCursor</cursorShape>
        </property>
        <property name="styleSheet">
-        <string notr="true">QPushButton#BVer{
+        <string notr="true">QPushButton#BReproducir{
 background-color: rgb(52, 107, 98);
 background-color: rgb(57, 57, 57);
 font: 87 10pt &quot;Arial Black&quot;;
@@ -301,7 +301,7 @@ color:white;
 }</string>
        </property>
        <property name="text">
-        <string>VER</string>
+        <string>REPRODUCIR</string>
        </property>
       </widget>
      </widget>

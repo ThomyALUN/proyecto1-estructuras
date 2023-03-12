@@ -60,7 +60,7 @@ class Ventana1(QMainWindow):
         self.min_2.clicked.connect(self.minimizar)
         self.frame_2.mouseMoveEvent = self.moveWindow
         self.BSubir.clicked.connect(self.seleccionarFoto)
-        self.BVer.clicked.connect(self.play)
+        self.BReproducir.clicked.connect(self.play)
         
         geometry = self.widget.geometry()
         posicion = self.widget.pos()
@@ -70,9 +70,8 @@ class Ventana1(QMainWindow):
         self.videoWidget = QVideoWidget()
         # establecemos la geometría del nuevo QVideoWidget
         self.videoWidget.setGeometry(geometry)
-        mainLayout = QVBoxLayout()
-        mainLayout.setGeometry(geometry)
-        mainLayout.addWidget(self.videoWidget)
+        #Nombre ventana
+        self.videoWidget.setWindowTitle("Tutorial")
         self.player = QMediaPlayer(self)
         media = QMediaContent(QUrl.fromLocalFile("Tutorial Google Takeout.mp4"))
         self.player.setMedia(media)
@@ -101,7 +100,9 @@ class Ventana1(QMainWindow):
         self.clickPosition = event.globalPos()
 
     def play(self):
+        #posición del widget
         self.videoWidget.move(629,120)
+        #self.videoWidget.setWindowFlag(QtCore.Qt.FramelessWindowHint)
         self.player.play()
         self.videoWidget.show()      
 
