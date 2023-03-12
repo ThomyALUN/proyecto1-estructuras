@@ -61,6 +61,7 @@ class Ventana1(QMainWindow):
         self.frame_2.mouseMoveEvent = self.moveWindow
         self.BSubir.clicked.connect(self.seleccionarFoto)
         self.BReproducir.clicked.connect(self.play)
+            
         
         geometry = self.widget.geometry()
         posicion = self.widget.pos()
@@ -77,7 +78,6 @@ class Ventana1(QMainWindow):
         self.player.setMedia(media)
         self.player.setVideoOutput(self.videoWidget)
         
-        
 
     def seleccionarFoto(self):
         dirPath = os.getcwd()  # Directorio de la carpeta actual
@@ -86,7 +86,11 @@ class Ventana1(QMainWindow):
         # src = cv2.imread(ruta, cv2.IMREAD_UNCHANGED) #Lee la ruta de la foto
         self.rutaImagen = ruta
         print(self.rutaImagen)
-
+        self.boolean = len(self.rutaImagen)!= 0
+        print(self.boolean)
+        if self.boolean == True:
+            self.mostrarVentana1()
+    
     def minimizar(self):
         self.showMinimized()
 
@@ -104,8 +108,39 @@ class Ventana1(QMainWindow):
         self.videoWidget.move(629,120)
         #self.videoWidget.setWindowFlag(QtCore.Qt.FramelessWindowHint)
         self.player.play()
-        self.videoWidget.show()      
+        self.videoWidget.show()   
+        
+    def mostrarVentana1(self):
+        self.ventana2 = Ventana2()
+        self.ventana2.raise_()
+        self.ventana2.setWindowFlag(QtCore.Qt.FramelessWindowHint)
+        self.ventana2.setAttribute(QtCore.Qt.WA_TranslucentBackground)
+        self.ventana2.show()
+        self.close()   
+            
+class Ventana2(QMainWindow):
+    def __init__(self):
+        super().__init__()
+        loadUi("Ventana2.ui", self)
+        self.setWindowTitle('Ventana 2')
+        self.cerrar_3.clicked.connect(window1.exit)
+        self.min_3.clicked.connect(self.minimizar)
+        self.frame_3.mouseMoveEvent = self.moveWindow
+        #self.BCrear.clicked.connect(self.seleccionarFoto)
+        #self.BModificar.clicked.connect(self.play)
 
+    def minimizar(self):
+        self.showMinimized()
+
+    def moveWindow(self, e):
+        if e.buttons() == Qt.LeftButton:
+            self.move(self.pos() + e.globalPos() - self.clickPosition)
+            self.clickPosition = e.globalPos()
+            e.accept()
+
+    def mousePressEvent(self, event):
+        self.clickPosition = event.globalPos()        
+    
 if __name__ == '__main__':
     app = QApplication(sys.argv)
     window1 = Window1()

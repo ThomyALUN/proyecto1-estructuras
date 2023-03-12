@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>1026</width>
-    <height>560</height>
+    <height>557</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -112,7 +112,7 @@ font: 11pt &quot;MS Shell Dlg 2&quot;;
          </rect>
         </property>
         <property name="styleSheet">
-         <string notr="true">border-image: url(:/icono youtube/Icono youtube.png);</string>
+         <string notr="true">border-image: url(:/Iconos/Icono youtube.png);</string>
         </property>
         <property name="text">
          <string/>

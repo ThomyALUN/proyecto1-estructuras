@@ -162,7 +162,7 @@ font: 90 20pt &quot;Rockwell Extra Bold&quot;;</string>
       </rect>
      </property>
      <property name="styleSheet">
-      <string notr="true">border-image: url(:/icono youtube/Icono youtube.png);</string>
+      <string notr="true">border-image: url(:/Iconos/Icono youtube.png);</string>
      </property>
      <property name="text">
       <string/>
