@@ -132,7 +132,6 @@ class Ventana1(QMainWindow):
         self.advertencia = Advertencia(self.mensaje)
         self.advertencia.show()
         
-
                     
 class Ventana2(QMainWindow):
     def __init__(self,controladorDf):
@@ -143,6 +142,7 @@ class Ventana2(QMainWindow):
         self.min_3.clicked.connect(self.minimizar)
         self.frame_3.mouseMoveEvent = self.moveWindow
         self.BCrear.clicked.connect(self.crearEtiqueta)
+        self.BModificar.clicked.connect(self.modificarEtiqueta)
         self.controladorDf = controladorDf
         #self.BModificar.clicked.connect(self.play)
 
@@ -160,6 +160,8 @@ class Ventana2(QMainWindow):
     
     def crearEtiqueta(self):
         DialogEtiquetas(self.controladorDf).show()
+    def modificarEtiqueta(self):
+        ModificarEtiquetas(self.controladorDf).show()
 
                    
 class DialogEtiquetas(QDialog):
@@ -195,15 +197,19 @@ class DialogEtiquetas(QDialog):
     
     def crearEtiqueta(self):
         self.etiqueta = self.lineEdit.text()
+        
         mensaje = self.controladorDf.crearEtiqueta(self.etiqueta)
         if mensaje != None:
+            #Espacio para que se vea mejor
+            mensaje = "      " + mensaje
             self.advertencia = Advertencia(mensaje)
             self.advertencia.show()
+        else:
+            mensaje = " ¡¡ETIQUETA CREADA CON EXITO!!" 
+            self.confirmacion = Confirmacion(mensaje)
+            self.confirmacion.show()
             
-                    
-
-
-        
+                            
 class Advertencia(QDialog):
     def __init__(self,mensaje):
         super(Advertencia,self).__init__()
@@ -229,8 +235,80 @@ class Advertencia(QDialog):
 
     def ocultar(self):
         self.close()
+
     
-           
+class Confirmacion(QDialog):
+    def __init__(self,mensaje):
+        super(Confirmacion,self).__init__()
+        loadUi("Confirmacion.ui", self)
+        self.cerrar_6.clicked.connect(self.ocultar)
+        self.setWindowFlag(Qt.FramelessWindowHint)
+        self.setAttribute(QtCore.Qt.WA_TranslucentBackground)
+        self.widget.mouseMoveEvent = self.moveWindow
+        self.label.setText(mensaje)
+
+    def moveWindow(self,e):
+        if e.buttons() == Qt.LeftButton:
+            self.move(self.pos()+e.globalPos()-self.clickPosition)
+            self.clickPosition = e.globalPos()
+            e.accept()
+                
+    def mousePressEvent(self, event):
+        self.clickPosition = event.globalPos()
+    
+    def keyPressEvent(self, qKeyEvent):
+        if qKeyEvent.key() == QtCore.Qt.Key_Return:
+            self.gui()
+
+    def ocultar(self):
+        self.close()
+
+
+class ModificarEtiquetas(QDialog):
+    def __init__(self,controladorDf):
+        super(ModificarEtiquetas,self).__init__()
+        loadUi("ModificarEtiquetas.ui", self)
+        self.cerrar_4.clicked.connect(self.ocultar)
+        self.min_4.clicked.connect(self.minimizar)
+        self.frame_4.mouseMoveEvent = self.moveWindow
+        self.setWindowFlag(Qt.FramelessWindowHint)
+        self.setAttribute(QtCore.Qt.WA_TranslucentBackground)
+        self.controladorDf = controladorDf
+        self.BAceptar.clicked.connect(self.modificarEtiqueta)
+        
+    def moveWindow(self,e):
+        if e.buttons() == Qt.LeftButton:
+            self.move(self.pos()+e.globalPos()-self.clickPosition)
+            self.clickPosition = e.globalPos()
+            e.accept()
+
+    def mousePressEvent(self, event):
+        self.clickPosition = event.globalPos()
+    
+    def keyPressEvent(self, qKeyEvent):
+        if qKeyEvent.key() == QtCore.Qt.Key_Return:
+            self.gui()
+
+    def ocultar(self):
+        self.close()
+    
+    def minimizar(self):        
+        self.showMinimized()
+    
+    def modificarEtiqueta(self):
+        self.oldEtiqueta = self.lineEdit.text()
+        self.newEtiqueta = self.lineEdit_2.text()
+        mensaje = self.controladorDf.modificarEtiqueta(self.oldEtiqueta,self.newEtiqueta)
+        if mensaje != None:
+            #Espacio para que se vea mejor
+            mensaje = "      " + mensaje
+            self.advertencia = Advertencia(mensaje)
+            self.advertencia.show()
+        else: 
+            mensaje = "          ¡¡ETIQUETA MODIFICADA!!"
+            self.confirmacion = Confirmacion(mensaje)
+            self.confirmacion.show()
+        
 if __name__ == '__main__':
     app = QApplication(sys.argv)
     window1 = Window1()

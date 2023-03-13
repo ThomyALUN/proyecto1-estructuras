@@ -1,5 +1,7 @@
 <RCC>
   <qresource prefix="Iconos">
+    <file>marca-de-verificacion.png</file>
+    <file>verificado.png</file>
     <file>advertencia.png</file>
     <file>Icono youtube.png</file>
   </qresource>

@@ -91,7 +91,7 @@ class ManejoDF():
         # Se comprueba que la etiqueta a cambiar se encuentra en la lista de etiquetas actual
         if oldEtiqueta in self.listaEtiquetas:
             # Se comprueba si la etiqueta nueva se encuentra en la lista de etiquetas actual 
-            if (newEtiqueta in self.listaEtiquetas):
+            if(newEtiqueta in self.listaEtiquetas):
                 return f'La etiqueta {newEtiqueta} ya existe'
             else:
                 subTabla=self.diccEtiquetas.pop(oldEtiqueta)                                # Se elimina la subtabla que hay en el diccionario de etiquetas y se retorna a una variable
@@ -107,7 +107,7 @@ class ManejoDF():
                         nombreCanal=subTabla.loc[i, self.nombreColTitulo]
                         self.actualizarEtqCanal(newEtiqueta, nombreCanal)
         else:
-            return 'La etiqueta que desea modificar no existe'
+            return 'La etiqueta no existe'
 
     # Eliminar una etiqueta en específico
     def eliminarEtiqueta(self, etiquetaEliminar):
