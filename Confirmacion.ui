@@ -84,7 +84,7 @@ color:gray
 font: 70 10pt &quot;Rockwell Extra Bold&quot;;</string>
     </property>
     <property name="text">
-     <string> ¡¡ETIQUETA CREADA CON ÉXITO!!</string>
+     <string/>
     </property>
    </widget>
    <widget class="QPushButton" name="cerrar_6">

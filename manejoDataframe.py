@@ -122,7 +122,7 @@ class ManejoDF():
             self.listaEtiquetas.remove(etiquetaEliminar)                # Se elimina la etiqueta de la lista
             self.diccEtiquetas.pop(etiquetaEliminar)                    # Se elimina la etiqueta del diccionario
         else:
-            return 'La etiqueta que desea eliminar no existe'
+            return f'La etiqueta {etiquetaEliminar} no existe'
 
     # Le agrega la etiqueta a un canal
     def clasificarCanal(self, etiqueta, nombreCanal):
