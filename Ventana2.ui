@@ -148,7 +148,7 @@ font: 70 15pt &quot;Rockwell Extra Bold&quot;;</string>
      <property name="geometry">
       <rect>
        <x>200</x>
-       <y>120</y>
+       <y>130</y>
        <width>241</width>
        <height>101</height>
       </rect>
@@ -191,7 +191,7 @@ color:white;
      <property name="geometry">
       <rect>
        <x>540</x>
-       <y>120</y>
+       <y>130</y>
        <width>241</width>
        <height>101</height>
       </rect>
@@ -216,7 +216,7 @@ color:white;
      <property name="geometry">
       <rect>
        <x>200</x>
-       <y>300</y>
+       <y>310</y>
        <width>241</width>
        <height>101</height>
       </rect>
@@ -242,7 +242,7 @@ color:white;
      <property name="geometry">
       <rect>
        <x>540</x>
-       <y>300</y>
+       <y>310</y>
        <width>241</width>
        <height>101</height>
       </rect>
@@ -284,13 +284,13 @@ font: 70 30pt &quot;Rockwell Extra Bold&quot;;</string>
       <string>ETIQUETAS</string>
      </property>
     </widget>
-    <widget class="QPushButton" name="pushButton">
+    <widget class="QPushButton" name="BSiguiente">
      <property name="geometry">
       <rect>
-       <x>890</x>
-       <y>230</y>
-       <width>71</width>
-       <height>71</height>
+       <x>920</x>
+       <y>250</y>
+       <width>41</width>
+       <height>41</height>
       </rect>
      </property>
      <property name="styleSheet">

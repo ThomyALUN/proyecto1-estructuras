@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>334</width>
+    <width>351</width>
     <height>448</height>
    </rect>
   </property>
@@ -16,9 +16,9 @@
   <widget class="QWidget" name="widget" native="true">
    <property name="geometry">
     <rect>
-     <x>20</x>
+     <x>10</x>
      <y>20</y>
-     <width>241</width>
+     <width>301</width>
      <height>351</height>
     </rect>
    </property>
@@ -37,7 +37,7 @@ border: 1px solid white;
      <rect>
       <x>10</x>
       <y>10</y>
-      <width>221</width>
+      <width>281</width>
       <height>31</height>
      </rect>
     </property>
@@ -147,7 +147,7 @@ font: 70 10pt &quot;Rockwell Extra Bold&quot;;</string>
     <widget class="QPushButton" name="min_4">
      <property name="geometry">
       <rect>
-       <x>150</x>
+       <x>210</x>
        <y>0</y>
        <width>31</width>
        <height>20</height>
@@ -173,7 +173,7 @@ border: 1px solid black;
     <widget class="QPushButton" name="cerrar_4">
      <property name="geometry">
       <rect>
-       <x>190</x>
+       <x>250</x>
        <y>0</y>
        <width>31</width>
        <height>21</height>
@@ -200,7 +200,7 @@ font: 11pt &quot;MS Shell Dlg 2&quot;;
    <widget class="QListWidget" name="listWidget">
     <property name="geometry">
      <rect>
-      <x>50</x>
+      <x>90</x>
       <y>50</y>
       <width>141</width>
       <height>281</height>
@@ -211,42 +211,11 @@ font: 11pt &quot;MS Shell Dlg 2&quot;;
 color:white;
 font: 75 14pt &quot;Berlin Sans FB Demi&quot;;</string>
     </property>
-    <item>
-     <property name="text">
-      <string>EDUCACION</string>
-     </property>
-     <property name="font">
-      <font>
-       <family>Berlin Sans FB Demi</family>
-       <pointsize>14</pointsize>
-       <weight>75</weight>
-       <bold>true</bold>
-      </font>
-     </property>
-     <property name="background">
-      <brush brushstyle="NoBrush">
-       <color alpha="255">
-        <red>255</red>
-        <green>255</green>
-        <blue>255</blue>
-       </color>
-      </brush>
-     </property>
-     <property name="foreground">
-      <brush brushstyle="NoBrush">
-       <color alpha="255">
-        <red>220</red>
-        <green>220</green>
-        <blue>220</blue>
-       </color>
-      </brush>
-     </property>
-    </item>
    </widget>
    <widget class="Line" name="line">
     <property name="geometry">
      <rect>
-      <x>30</x>
+      <x>70</x>
       <y>50</y>
       <width>21</width>
       <height>281</height>
@@ -262,7 +231,7 @@ font: 75 14pt &quot;Berlin Sans FB Demi&quot;;</string>
    <widget class="Line" name="line_2">
     <property name="geometry">
      <rect>
-      <x>190</x>
+      <x>200</x>
       <y>50</y>
       <width>31</width>
       <height>281</height>
