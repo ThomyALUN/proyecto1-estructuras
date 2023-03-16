@@ -1,5 +1,7 @@
 <RCC>
   <qresource prefix="Iconos">
+    <file>derecha.png</file>
+    <file>flecha-hacia-la-derecha-en-un-circulo.png</file>
     <file>marca-de-verificacion.png</file>
     <file>verificado.png</file>
     <file>advertencia.png</file>

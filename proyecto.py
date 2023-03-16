@@ -1,6 +1,6 @@
 import sys
 import os
-from PyQt5.QtWidgets import QWidget, QApplication, QMainWindow, QPushButton, QFileDialog,QVBoxLayout, QDialog
+from PyQt5.QtWidgets import QWidget, QApplication, QMainWindow, QPushButton, QFileDialog,QVBoxLayout, QDialog, QListWidget
 from PyQt5.uic import loadUi
 from PyQt5.QtCore import *
 from PyQt5.QtGui import *
@@ -20,7 +20,6 @@ class Window1(QMainWindow):
         self.setWindowTitle('Ventana Inicio')
         self.frame.mouseMoveEvent = self.moveWindow
         self.BIniciar.clicked.connect(self.mostrarVentana1)
-        
         
         
     def moveWindow(self,e):
@@ -144,8 +143,9 @@ class Ventana2(QMainWindow):
         self.BCrear.clicked.connect(self.crearEtiqueta)
         self.BModificar.clicked.connect(self.modificarEtiqueta)
         self.BEliminar.clicked.connect(self.eliminarEtiqueta)
+        self.BVer.clicked.connect(self.verEtiquetas)
         self.controladorDf = controladorDf
-        #self.BModificar.clicked.connect(self.play)
+        
 
     def minimizar(self):
         self.showMinimized()
@@ -165,6 +165,8 @@ class Ventana2(QMainWindow):
         ModificarEtiquetas(self.controladorDf).show()
     def eliminarEtiqueta(self):
         EliminarEtiqueta(self.controladorDf).show()
+    def verEtiquetas(self):
+        VerEtiquetas(self.controladorDf).show()
 
                    
 class DialogEtiquetas(QDialog):
@@ -345,7 +347,7 @@ class EliminarEtiqueta(QDialog):
         self.showMinimized()
     
     def eliminarEtiqueta(self):
-        self.etiqueta = self.lineEdit.text()
+        self.etiqueta = self.lineEdit.text()        
         mensaje = self.controladorDf.eliminarEtiqueta(self.etiqueta)
         if mensaje != None:
             self.advertencia = Advertencia(mensaje)
@@ -354,7 +356,45 @@ class EliminarEtiqueta(QDialog):
             mensaje = "          ¡¡ETIQUETA ELIMINADA!!" 
             self.confirmacion = Confirmacion(mensaje)
             self.confirmacion.show()        
-               
+
+
+class VerEtiquetas(QDialog):
+
+    def __init__(self,controladorDf):
+        super(VerEtiquetas,self).__init__()
+        loadUi("VerEtiquetas.ui", self)
+        self.cerrar_4.clicked.connect(self.ocultar)
+        self.min_4.clicked.connect(self.minimizar)
+        self.frame_4.mouseMoveEvent = self.moveWindow
+        self.setWindowFlag(Qt.FramelessWindowHint)
+        self.setAttribute(QtCore.Qt.WA_TranslucentBackground)
+        self.controladorDf = controladorDf
+        self.etiquetas = self.controladorDf.getListaEtiquetas()
+        print(self.etiquetas)
+        for etiqueta in self.etiquetas:
+            self.listWidget.addItem(etiqueta)
+        
+    def moveWindow(self,e):
+        if e.buttons() == Qt.LeftButton:
+            self.move(self.pos()+e.globalPos()-self.clickPosition)
+            self.clickPosition = e.globalPos()
+            e.accept()
+
+    def mousePressEvent(self, event):
+        self.clickPosition = event.globalPos()
+    
+    def keyPressEvent(self, qKeyEvent):
+        if qKeyEvent.key() == QtCore.Qt.Key_Return:
+            self.gui()
+
+    def ocultar(self):
+        self.close()
+    
+    def minimizar(self):        
+        self.showMinimized()
+    
+    
+              
 if __name__ == '__main__':
     app = QApplication(sys.argv)
     window1 = Window1()
