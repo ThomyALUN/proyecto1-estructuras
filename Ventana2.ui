@@ -287,14 +287,18 @@ font: 70 30pt &quot;Rockwell Extra Bold&quot;;</string>
     <widget class="QPushButton" name="BSiguiente">
      <property name="geometry">
       <rect>
-       <x>920</x>
-       <y>250</y>
-       <width>41</width>
-       <height>41</height>
+       <x>910</x>
+       <y>240</y>
+       <width>51</width>
+       <height>51</height>
       </rect>
      </property>
+     <property name="cursor">
+      <cursorShape>PointingHandCursor</cursorShape>
+     </property>
      <property name="styleSheet">
-      <string notr="true">border-image: url(:/Iconos/derecha.png);</string>
+      <string notr="true">border-image: url(:/Iconos/derecha.png);
+border-image: url(:/Iconos/proximo (1).png);</string>
      </property>
      <property name="text">
       <string/>

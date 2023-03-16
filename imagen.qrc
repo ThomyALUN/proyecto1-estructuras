@@ -1,9 +1,11 @@
 <RCC>
   <qresource prefix="Iconos">
+    <file>proximo.png</file>
     <file>derecha.png</file>
     <file>flecha-hacia-la-derecha-en-un-circulo.png</file>
     <file>marca-de-verificacion.png</file>
     <file>verificado.png</file>
+    <file>proximo (1).png</file>
     <file>advertencia.png</file>
     <file>Icono youtube.png</file>
   </qresource>
