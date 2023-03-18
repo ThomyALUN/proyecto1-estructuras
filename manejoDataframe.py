@@ -144,7 +144,7 @@ class ManejoDF():
         else:
             return f"El canal {canal} ya está clasificado"
 
-    # Cambia la etiqueta asociada a un canal
+    # Cambia la etiqueta asociada a un canal (no es un boton)
     def actualizarEtqCanal(self, etiqueta, nombreCanal):
         # Se comprueba que el canal este registrado
         if nombreCanal not in self.listaCanales:

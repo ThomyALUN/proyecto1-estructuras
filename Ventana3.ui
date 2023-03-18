@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1074</width>
+    <width>1038</width>
     <height>572</height>
    </rect>
   </property>
@@ -18,7 +18,7 @@
     <rect>
      <x>10</x>
      <y>10</y>
-     <width>1008</width>
+     <width>1011</width>
      <height>521</height>
     </rect>
    </property>
@@ -208,7 +208,7 @@ color:white;
 }</string>
     </property>
     <property name="text">
-     <string>ACTUALIZAR</string>
+     <string>REGISTRAR</string>
     </property>
    </widget>
    <widget class="QPushButton" name="BEliminar">
@@ -260,7 +260,7 @@ color:white;
 }</string>
     </property>
     <property name="text">
-     <string>VER</string>
+     <string>CONSULTAR</string>
     </property>
    </widget>
    <widget class="QLabel" name="label_3">
@@ -287,7 +287,7 @@ font: 70 30pt &quot;Rockwell Extra Bold&quot;;</string>
     <property name="geometry">
      <rect>
       <x>910</x>
-      <y>240</y>
+      <y>250</y>
       <width>51</width>
       <height>51</height>
      </rect>
@@ -306,9 +306,9 @@ border-image: url(:/Iconos/proximo (1).png);</string>
    <widget class="QListWidget" name="listWidget">
     <property name="geometry">
      <rect>
-      <x>140</x>
+      <x>130</x>
       <y>70</y>
-      <width>141</width>
+      <width>191</width>
       <height>411</height>
      </rect>
     </property>
@@ -321,7 +321,7 @@ font: 75 14pt &quot;Berlin Sans FB Demi&quot;;</string>
    <widget class="Line" name="line_2">
     <property name="geometry">
      <rect>
-      <x>130</x>
+      <x>110</x>
       <y>70</y>
       <width>21</width>
       <height>411</height>
@@ -337,9 +337,9 @@ font: 75 14pt &quot;Berlin Sans FB Demi&quot;;</string>
    <widget class="Line" name="line_3">
     <property name="geometry">
      <rect>
-      <x>270</x>
+      <x>320</x>
       <y>70</y>
-      <width>31</width>
+      <width>21</width>
       <height>411</height>
      </rect>
     </property>
@@ -400,11 +400,11 @@ color:white;
      <string>QUITAR</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="BSiguiente_2">
+   <widget class="QPushButton" name="BAtras">
     <property name="geometry">
      <rect>
       <x>40</x>
-      <y>230</y>
+      <y>250</y>
       <width>51</width>
       <height>51</height>
      </rect>

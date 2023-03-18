@@ -144,7 +144,61 @@ class Ventana2(QMainWindow):
         self.BModificar.clicked.connect(self.modificarEtiqueta)
         self.BEliminar.clicked.connect(self.eliminarEtiqueta)
         self.BVer.clicked.connect(self.verEtiquetas)
+        self.BSiguiente.clicked.connect(self.mostrarVentana3)
         self.controladorDf = controladorDf
+        
+
+    def minimizar(self):
+        self.showMinimized()
+
+    def moveWindow(self, e):
+        if e.buttons() == Qt.LeftButton:
+            self.move(self.pos() + e.globalPos() - self.clickPosition)
+            self.clickPosition = e.globalPos()
+            e.accept()
+            
+    def mostrarVentana3(self):
+        self.ventana3 = Ventana3(self.controladorDf)
+        self.ventana3.raise_()
+        self.ventana3.setWindowFlag(QtCore.Qt.FramelessWindowHint)
+        self.ventana3.setAttribute(QtCore.Qt.WA_TranslucentBackground)
+        self.ventana3.show()
+        
+        self.close()            
+
+    def mousePressEvent(self, event):
+        self.clickPosition = event.globalPos()     
+    
+    def crearEtiqueta(self):
+        DialogEtiquetas(self.controladorDf).show()
+        
+    def modificarEtiqueta(self):
+        ModificarEtiquetas(self.controladorDf).show()
+    
+    def eliminarEtiqueta(self):
+        EliminarEtiqueta(self.controladorDf).show()
+    
+    def verEtiquetas(self):
+        VerEtiquetas(self.controladorDf).show()
+
+
+class Ventana3(QMainWindow):
+    def __init__(self,controladorDf):
+        super().__init__()
+        loadUi("Ventana3.ui", self)
+        self.cerrar_3.clicked.connect(window1.exit)
+        self.min_3.clicked.connect(self.minimizar)
+        self.frame_3.mouseMoveEvent = self.moveWindow
+        self.BAtras.clicked.connect(self.mostrarVentana2)
+        #self.BCrear.clicked.connect(self.crearEtiqueta)
+        #self.BModificar.clicked.connect(self.modificarEtiqueta)
+        #self.BEliminar.clicked.connect(self.eliminarEtiqueta)
+        #self.BVer.clicked.connect(self.verEtiquetas)
+        self.controladorDf = controladorDf
+        self.canales = self.controladorDf.getListaCanales()
+        print(self.canales)
+        for canal in self.canales:
+            self.listWidget.addItem(canal)
         
 
     def minimizar(self):
@@ -157,18 +211,18 @@ class Ventana2(QMainWindow):
             e.accept()
 
     def mousePressEvent(self, event):
-        self.clickPosition = event.globalPos()     
-    
-    def crearEtiqueta(self):
-        DialogEtiquetas(self.controladorDf).show()
-    def modificarEtiqueta(self):
-        ModificarEtiquetas(self.controladorDf).show()
-    def eliminarEtiqueta(self):
-        EliminarEtiqueta(self.controladorDf).show()
-    def verEtiquetas(self):
-        VerEtiquetas(self.controladorDf).show()
+        self.clickPosition = event.globalPos()
+        
+    def mostrarVentana2(self):
+        self.ventana2 = Ventana2(self.controladorDf)
+        self.ventana2.raise_()
+        self.ventana2.setWindowFlag(QtCore.Qt.FramelessWindowHint)
+        self.ventana2.setAttribute(QtCore.Qt.WA_TranslucentBackground)
+        self.ventana2.show()
+        
+        self.close()
 
-                   
+                    
 class DialogEtiquetas(QDialog):
     def __init__(self,controladorDf):
         super(DialogEtiquetas,self).__init__()
