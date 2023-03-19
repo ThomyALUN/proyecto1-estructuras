@@ -291,6 +291,9 @@ font: 70 12pt &quot;Rockwell Extra Bold&quot;;</string>
       <height>20</height>
      </rect>
     </property>
+    <property name="cursor">
+     <cursorShape>PointingHandCursor</cursorShape>
+    </property>
     <property name="styleSheet">
      <string notr="true">background-color: rgb(25, 25, 25);
 border-radius:6px;

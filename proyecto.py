@@ -170,7 +170,7 @@ class Ventana2(QMainWindow):
         self.clickPosition = event.globalPos()     
     
     def crearEtiqueta(self):
-        DialogEtiquetas(self.controladorDf).show()
+        CrearEtiqueta(self.controladorDf).show()
         
     def modificarEtiqueta(self):
         ModificarEtiquetas(self.controladorDf).show()
@@ -190,15 +190,18 @@ class Ventana3(QMainWindow):
         self.min_3.clicked.connect(self.minimizar)
         self.frame_3.mouseMoveEvent = self.moveWindow
         self.BAtras.clicked.connect(self.mostrarVentana2)
-        #self.BCrear.clicked.connect(self.crearEtiqueta)
-        #self.BModificar.clicked.connect(self.modificarEtiqueta)
-        #self.BEliminar.clicked.connect(self.eliminarEtiqueta)
-        #self.BVer.clicked.connect(self.verEtiquetas)
+        self.BClasificar.clicked.connect(self.clasificarCanal)
+        self.BRegistrar.clicked.connect(self.registrarCanal)
+        self.BEliminar.clicked.connect(self.eliminarCanal)
+        self.BModificar.clicked.connect(self.modificarEtqCanal)
+        self.BQuitar.clicked.connect(self.quitarEtqCanal)
+
         self.controladorDf = controladorDf
         self.canales = self.controladorDf.getListaCanales()
         print(self.canales)
-        for canal in self.canales:
-            self.listWidget.addItem(canal)
+        self.actualizarListaCanales()
+        
+            
         
 
     def minimizar(self):
@@ -221,12 +224,34 @@ class Ventana3(QMainWindow):
         self.ventana2.show()
         
         self.close()
+    
+    def actualizarListaCanales(self):
+        self.listWidget.clear()
+        self.canales = self.controladorDf.getListaCanales()
+        for canal in self.canales:
+            self.listWidget.addItem(canal)
+        
+    def clasificarCanal(self):
+        ClasificarCanal(self.controladorDf).show()
+        
+    def registrarCanal(self):
+        RegistrarCanal(self.controladorDf,self).show()
+    
+    def eliminarCanal(self):
+        EliminarCanal(self.controladorDf,self).show()
+        
+    def modificarEtqCanal(self):
+        ModificarEtqCanal(self.controladorDf).show()
+        
+    def quitarEtqCanal(self):
+        QuitarEtqCanal(self.controladorDf).show()
 
-                    
-class DialogEtiquetas(QDialog):
+
+               
+class CrearEtiqueta(QDialog):
     def __init__(self,controladorDf):
-        super(DialogEtiquetas,self).__init__()
-        loadUi("DialogEtiquetas.ui", self)
+        super(CrearEtiqueta,self).__init__()
+        loadUi("CrearEtiqueta.ui", self)
         self.cerrar_4.clicked.connect(self.ocultar)
         self.min_4.clicked.connect(self.minimizar)
         self.frame_4.mouseMoveEvent = self.moveWindow
@@ -256,8 +281,8 @@ class DialogEtiquetas(QDialog):
     
     def crearEtiqueta(self):
         self.etiqueta = self.lineEdit.text()
-        
         mensaje = self.controladorDf.crearEtiqueta(self.etiqueta)
+        self.lineEdit.clear()
         if mensaje != None:
             #Espacio para que se vea mejor
             mensaje = "      " + mensaje
@@ -358,6 +383,8 @@ class ModificarEtiquetas(QDialog):
         self.oldEtiqueta = self.lineEdit.text()
         self.newEtiqueta = self.lineEdit_2.text()
         mensaje = self.controladorDf.modificarEtiqueta(self.oldEtiqueta,self.newEtiqueta)
+        self.lineEdit.clear()
+        self.lineEdit_2.clear()
         if mensaje != None:
             #Espacio para que se vea mejor
             mensaje = "      " + mensaje
@@ -403,6 +430,7 @@ class EliminarEtiqueta(QDialog):
     def eliminarEtiqueta(self):
         self.etiqueta = self.lineEdit.text()        
         mensaje = self.controladorDf.eliminarEtiqueta(self.etiqueta)
+        self.lineEdit.clear()
         if mensaje != None:
             self.advertencia = Advertencia(mensaje)
             self.advertencia.show()
@@ -446,9 +474,261 @@ class VerEtiquetas(QDialog):
     
     def minimizar(self):        
         self.showMinimized()
+
+
+class ClasificarCanal(QDialog):
+
+    def __init__(self,controladorDf):
+        super(ClasificarCanal,self).__init__()
+        loadUi("ClasificarCanal.ui", self)
+        self.cerrar_4.clicked.connect(self.ocultar)
+        self.min_4.clicked.connect(self.minimizar)
+        self.frame_4.mouseMoveEvent = self.moveWindow
+        self.setWindowFlag(Qt.FramelessWindowHint)
+        self.setAttribute(QtCore.Qt.WA_TranslucentBackground)
+        self.controladorDf = controladorDf
+        self.etiquetas = self.controladorDf.getListaEtiquetas()
+        self.BAceptar.clicked.connect(self.clasificarCanal)
+        print(self.etiquetas)
+        for etiqueta in self.etiquetas:
+            self.comboBox.addItem(etiqueta)
+        self.comboBox.setCurrentIndex(-1)
+             
+    def moveWindow(self,e):
+        if e.buttons() == Qt.LeftButton:
+            self.move(self.pos()+e.globalPos()-self.clickPosition)
+            self.clickPosition = e.globalPos()
+            e.accept()
+
+    def mousePressEvent(self, event):
+        self.clickPosition = event.globalPos()
     
+    def keyPressEvent(self, qKeyEvent):
+        if qKeyEvent.key() == QtCore.Qt.Key_Return:
+            self.gui()
+
+    def ocultar(self):
+        self.close()
     
-              
+    def minimizar(self):        
+        self.showMinimized()
+
+    def clasificarCanal(self):
+        self.canal = self.lineEdit.text() 
+        self.etiqueta = self.comboBox.currentText()
+        mensaje = self.controladorDf.clasificarCanal(self.etiqueta,self.canal)
+        self.lineEdit.clear()
+        self.comboBox.setCurrentIndex(-1)
+        print(mensaje)
+        if mensaje != None:
+            self.advertencia = Advertencia(mensaje)
+            self.advertencia.show()
+        else:
+            mensaje = "          ¡¡CANAL CLASIFICADO!!" 
+            self.confirmacion = Confirmacion(mensaje)
+            self.confirmacion.show()
+            
+            
+class RegistrarCanal(QDialog):
+    
+    def __init__(self,controladorDf, controladorVentana3):
+        super(RegistrarCanal,self).__init__()
+        loadUi("RegistrarCanal.ui", self)
+        self.cerrar_4.clicked.connect(self.ocultar)
+        self.min_4.clicked.connect(self.minimizar)
+        self.frame_4.mouseMoveEvent = self.moveWindow
+        self.setWindowFlag(Qt.FramelessWindowHint)
+        self.setAttribute(QtCore.Qt.WA_TranslucentBackground)
+        self.controladorDf = controladorDf
+        self.BAceptar.clicked.connect(self.registrarCanal)
+        self.controladorVentana3 = controladorVentana3
+             
+    def moveWindow(self,e):
+        if e.buttons() == Qt.LeftButton:
+            self.move(self.pos()+e.globalPos()-self.clickPosition)
+            self.clickPosition = e.globalPos()
+            e.accept()
+
+    def mousePressEvent(self, event):
+        self.clickPosition = event.globalPos()
+    
+    def keyPressEvent(self, qKeyEvent):
+        if qKeyEvent.key() == QtCore.Qt.Key_Return:
+            self.gui()
+
+    def ocultar(self):
+        self.close()
+    
+    def minimizar(self):        
+        self.showMinimized()
+
+    def registrarCanal(self):
+        self.canal = self.lineEdit.text()
+        self.url = self.lineEdit_2.text()
+        self.etiqueta = self.lineEdit_3.text()
+        if self.etiqueta == "Opcional":
+            self.etiqueta = None
+        mensaje = self.controladorDf.registrarCanal(self.url,self.canal,self.etiqueta)
+        self.lineEdit.clear()
+        self.lineEdit_2.clear()
+        print(mensaje)
+        if mensaje != None:
+            self.advertencia = Advertencia(mensaje)
+            self.advertencia.show()
+        else:
+            mensaje = "          ¡¡CANAL REGISTRADO!!" 
+            self.confirmacion = Confirmacion(mensaje)
+            self.confirmacion.show()
+            self.controladorVentana3.actualizarListaCanales()
+        
+             
+class EliminarCanal(QDialog):
+    
+    def __init__(self,controladorDf,controladorVentana3):
+        super(EliminarCanal,self).__init__()
+        loadUi("EliminarCanal.ui", self)
+        self.cerrar_4.clicked.connect(self.ocultar)
+        self.min_4.clicked.connect(self.minimizar)
+        self.frame_4.mouseMoveEvent = self.moveWindow
+        self.setWindowFlag(Qt.FramelessWindowHint)
+        self.setAttribute(QtCore.Qt.WA_TranslucentBackground)
+        self.controladorDf = controladorDf
+        self.BAceptar.clicked.connect(self.eliminarCanal)
+        self.controladorVentana3 = controladorVentana3
+        
+    def moveWindow(self,e):
+        if e.buttons() == Qt.LeftButton:
+            self.move(self.pos()+e.globalPos()-self.clickPosition)
+            self.clickPosition = e.globalPos()
+            e.accept()
+
+    def mousePressEvent(self, event):
+        self.clickPosition = event.globalPos()
+    
+    def keyPressEvent(self, qKeyEvent):
+        if qKeyEvent.key() == QtCore.Qt.Key_Return:
+            self.gui()
+
+    def ocultar(self):
+        self.close()
+    
+    def minimizar(self):        
+        self.showMinimized()
+
+    def eliminarCanal(self):
+        self.canal = self.lineEdit.text() 
+        mensaje = self.controladorDf.eliminarCanal(self.canal)
+        self.lineEdit.clear()
+        print(mensaje)
+        if mensaje != None:
+            self.advertencia = Advertencia(mensaje)
+            self.advertencia.show()
+        else:
+            mensaje = "          ¡¡CANAL ELIMINADO!!" 
+            self.confirmacion = Confirmacion(mensaje)
+            self.confirmacion.show()
+            self.controladorVentana3.actualizarListaCanales()
+
+
+class ModificarEtqCanal(QDialog):
+    
+    def __init__(self,controladorDf):
+        super(ModificarEtqCanal,self).__init__()
+        loadUi("ModificarEtqCanal.ui", self)
+        self.cerrar_4.clicked.connect(self.ocultar)
+        self.min_4.clicked.connect(self.minimizar)
+        self.frame_4.mouseMoveEvent = self.moveWindow
+        self.setWindowFlag(Qt.FramelessWindowHint)
+        self.setAttribute(QtCore.Qt.WA_TranslucentBackground)
+        self.controladorDf = controladorDf
+        self.etiquetas = self.controladorDf.getListaEtiquetas()
+        self.BAceptar.clicked.connect(self.modificarEtqCanal)
+        print(self.etiquetas)
+        for etiqueta in self.etiquetas:
+            self.comboBox.addItem(etiqueta)
+        self.comboBox.setCurrentIndex(-1)
+             
+    def moveWindow(self,e):
+        if e.buttons() == Qt.LeftButton:
+            self.move(self.pos()+e.globalPos()-self.clickPosition)
+            self.clickPosition = e.globalPos()
+            e.accept()
+
+    def mousePressEvent(self, event):
+        self.clickPosition = event.globalPos()
+    
+    def keyPressEvent(self, qKeyEvent):
+        if qKeyEvent.key() == QtCore.Qt.Key_Return:
+            self.gui()
+
+    def ocultar(self):
+        self.close()
+    
+    def minimizar(self):        
+        self.showMinimized()
+
+    def modificarEtqCanal(self):
+        self.canal = self.lineEdit.text() 
+        self.nuevaEtiqueta = self.comboBox.currentText()
+        mensaje = self.controladorDf.modificarEtqCanal(self.nuevaEtiqueta,self.canal)
+        self.lineEdit.clear()
+        self.comboBox.setCurrentIndex(-1)
+        print(mensaje)
+        if mensaje != None:
+            self.advertencia = Advertencia(mensaje)
+            self.advertencia.show()
+        else:
+            mensaje = "          ¡¡CANAL MODIFICADO!!" 
+            self.confirmacion = Confirmacion(mensaje)
+            self.confirmacion.show()
+
+
+class QuitarEtqCanal(QDialog):
+    
+    def __init__(self,controladorDf):
+        super(QuitarEtqCanal,self).__init__()
+        loadUi("QuitarEtqCanal.ui", self)
+        self.cerrar_4.clicked.connect(self.ocultar)
+        self.min_4.clicked.connect(self.minimizar)
+        self.frame_4.mouseMoveEvent = self.moveWindow
+        self.setWindowFlag(Qt.FramelessWindowHint)
+        self.setAttribute(QtCore.Qt.WA_TranslucentBackground)
+        self.controladorDf = controladorDf
+        self.BAceptar.clicked.connect(self.quitarEtqCanal)
+        
+    def moveWindow(self,e):
+        if e.buttons() == Qt.LeftButton:
+            self.move(self.pos()+e.globalPos()-self.clickPosition)
+            self.clickPosition = e.globalPos()
+            e.accept()
+
+    def mousePressEvent(self, event):
+        self.clickPosition = event.globalPos()
+    
+    def keyPressEvent(self, qKeyEvent):
+        if qKeyEvent.key() == QtCore.Qt.Key_Return:
+            self.gui()
+
+    def ocultar(self):
+        self.close()
+    
+    def minimizar(self):        
+        self.showMinimized()
+
+    def quitarEtqCanal(self):
+        self.canal = self.lineEdit.text() 
+        mensaje = self.controladorDf.quitarEtqCanal(self.canal)
+        self.lineEdit.clear()
+        print(mensaje)
+        if mensaje != None:
+            self.advertencia = Advertencia(mensaje)
+            self.advertencia.show()
+        else:
+            mensaje = "   ¡¡CANAL SIN ETIQUETA!!" 
+            self.confirmacion = Confirmacion(mensaje)
+            self.confirmacion.show()
+
+
 if __name__ == '__main__':
     app = QApplication(sys.argv)
     window1 = Window1()

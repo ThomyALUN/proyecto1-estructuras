@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>400</width>
-    <height>300</height>
+    <height>302</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -290,6 +290,9 @@ font: 70 12pt &quot;Rockwell Extra Bold&quot;;</string>
       <width>111</width>
       <height>20</height>
      </rect>
+    </property>
+    <property name="cursor">
+     <cursorShape>PointingHandCursor</cursorShape>
     </property>
     <property name="styleSheet">
      <string notr="true">background-color: rgb(25, 25, 25);

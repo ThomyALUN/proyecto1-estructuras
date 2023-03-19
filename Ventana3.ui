@@ -186,7 +186,7 @@ color:white;
      <enum>Qt::Vertical</enum>
     </property>
    </widget>
-   <widget class="QPushButton" name="BActualizar">
+   <widget class="QPushButton" name="BRegistrar">
     <property name="geometry">
      <rect>
       <x>640</x>
@@ -199,7 +199,7 @@ color:white;
      <cursorShape>PointingHandCursor</cursorShape>
     </property>
     <property name="styleSheet">
-     <string notr="true">QPushButton#BActualizar{
+     <string notr="true">QPushButton#BRegistrar{
 background-color: rgb(52, 107, 98);
 background-color: rgb(57, 57, 57);
 border-radius:15px;
@@ -241,7 +241,7 @@ color:white;
     <property name="geometry">
      <rect>
       <x>640</x>
-      <y>250</y>
+      <y>380</y>
       <width>241</width>
       <height>101</height>
      </rect>
@@ -268,7 +268,7 @@ color:white;
      <rect>
       <x>430</x>
       <y>30</y>
-      <width>271</width>
+      <width>231</width>
       <height>71</height>
      </rect>
     </property>
@@ -379,7 +379,7 @@ color:white;
     <property name="geometry">
      <rect>
       <x>640</x>
-      <y>380</y>
+      <y>250</y>
       <width>241</width>
       <height>101</height>
      </rect>

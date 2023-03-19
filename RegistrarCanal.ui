@@ -36,7 +36,7 @@ border: 1px solid white;
     <property name="geometry">
      <rect>
       <x>90</x>
-      <y>140</y>
+      <y>170</y>
       <width>141</width>
       <height>41</height>
      </rect>
@@ -63,7 +63,7 @@ color:black;
     <property name="geometry">
      <rect>
       <x>20</x>
-      <y>89</y>
+      <y>50</y>
       <width>161</width>
       <height>21</height>
      </rect>
@@ -82,8 +82,8 @@ font: 70 15pt &quot;Rockwell Extra Bold&quot;;</string>
    <widget class="QLineEdit" name="lineEdit">
     <property name="geometry">
      <rect>
-      <x>200</x>
-      <y>90</y>
+      <x>190</x>
+      <y>50</y>
       <width>113</width>
       <height>20</height>
      </rect>
@@ -261,6 +261,82 @@ font: 11pt &quot;MS Shell Dlg 2&quot;;
       <string>x</string>
      </property>
     </widget>
+   </widget>
+   <widget class="QLabel" name="label_3">
+    <property name="geometry">
+     <rect>
+      <x>90</x>
+      <y>80</y>
+      <width>141</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">font: 14pt &quot;Lucida Console&quot;;
+
+color: rgb(189, 189, 189);
+;
+font: 70 15pt &quot;Rockwell Extra Bold&quot;;</string>
+    </property>
+    <property name="text">
+     <string>URL CANAL</string>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="lineEdit_2">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>110</y>
+      <width>281</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(25, 25, 25);
+border-radius:6px;
+color: white</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_4">
+    <property name="geometry">
+     <rect>
+      <x>60</x>
+      <y>140</y>
+      <width>161</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">font: 14pt &quot;Lucida Console&quot;;
+
+color: rgb(189, 189, 189);
+;
+font: 70 15pt &quot;Rockwell Extra Bold&quot;;</string>
+    </property>
+    <property name="text">
+     <string>ETIQUETA</string>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="lineEdit_3">
+    <property name="geometry">
+     <rect>
+      <x>190</x>
+      <y>140</y>
+      <width>113</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(25, 25, 25);
+border-radius:6px;
+color: white</string>
+    </property>
+    <property name="text">
+     <string>Opcional</string>
+    </property>
    </widget>
   </widget>
  </widget>

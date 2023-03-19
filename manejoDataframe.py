@@ -142,7 +142,7 @@ class ManejoDF():
                 self.diccEtiquetas[etiqueta]=pd.concat([self.diccEtiquetas[etiqueta],canal])  #Si la etiqueta ya tiene canales, se agregan los nuevos al final
             self.actualizarEtqCanal(etiqueta, nombreCanal)
         else:
-            return f"El canal {canal} ya está clasificado"
+            return f"El canal {nombreCanal} ya está clasificado"
 
     # Cambia la etiqueta asociada a un canal (no es un boton)
     def actualizarEtqCanal(self, etiqueta, nombreCanal):
@@ -194,6 +194,8 @@ class ManejoDF():
         nuevaFila=pd.DataFrame([[urlCanal, nombreCanal, None]], columns=[self.nombreColURL, self.nombreColTitulo, "Etiqueta"])  # Se genera un DF con una sola fila, con los datos suministrados para el nuevo canal
         self.tabla=pd.concat([self.tabla,nuevaFila], ignore_index=True) # Se añade el nuevo canal al final de la tabla principal
         self.listaCanales.append(nombreCanal)                           # Se agrega el nombre del canal a la lista de canales
+        
+        
         if etiqueta!=None:
             # Se clasifica el canal en caso de que se haya enviado una etiqueta                             
             self.clasificarCanal(etiqueta, nombreCanal)
