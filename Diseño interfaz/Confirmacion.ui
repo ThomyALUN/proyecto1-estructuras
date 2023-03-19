@@ -117,7 +117,7 @@ color: white;
   </widget>
  </widget>
  <resources>
-  <include location="imagen.qrc"/>
+  <include location="../Imagenes y video/imagen.qrc"/>
  </resources>
  <connections/>
 </ui>

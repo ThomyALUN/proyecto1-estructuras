@@ -423,7 +423,7 @@ border-image: url(:/Iconos/proximo.png);</string>
   </widget>
  </widget>
  <resources>
-  <include location="imagen.qrc"/>
+  <include location="../Imagenes y video/imagen.qrc"/>
  </resources>
  <connections/>
 </ui>

@@ -265,7 +265,7 @@ font: 11pt &quot;MS Shell Dlg 2&quot;;
   </widget>
  </widget>
  <resources>
-  <include location="imagen.qrc"/>
+  <include location="../Imagenes y video/imagen.qrc"/>
  </resources>
  <connections/>
 </ui>

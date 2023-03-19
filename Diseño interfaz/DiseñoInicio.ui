@@ -173,7 +173,7 @@ font: 90 20pt &quot;Rockwell Extra Bold&quot;;</string>
   <widget class="QStatusBar" name="statusbar"/>
  </widget>
  <resources>
-  <include location="imagen.qrc"/>
+  <include location="../Imagenes y video/imagen.qrc"/>
  </resources>
  <connections/>
 </ui>

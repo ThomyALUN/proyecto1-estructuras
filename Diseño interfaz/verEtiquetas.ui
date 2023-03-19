@@ -263,7 +263,7 @@ font: 75 14pt &quot;Berlin Sans FB Demi&quot;;</string>
   </widget>
  </widget>
  <resources>
-  <include location="imagen.qrc"/>
+  <include location="../Imagenes y video/imagen.qrc"/>
  </resources>
  <connections/>
 </ui>
