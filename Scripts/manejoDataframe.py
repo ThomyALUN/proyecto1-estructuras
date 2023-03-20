@@ -237,7 +237,10 @@ class ManejoDF():
         if etiqueta not in self.listaEtiquetas:
             return f"La etiqueta {etiqueta} no existe"
         else:
-            return self.diccEtiquetas[etiqueta]
+            subtabla=self.diccEtiquetas[etiqueta]                   # Se recupera el subdataframe con los canales relacionados a una etiqueta
+            canalesSubtabla=subtabla.loc[:,self.nombreColTitulo]    # Se separa el nombre de los canales solamente
+            canalesSubtabla=list(canalesSubtabla)                   # Se transforman los datos a una lista de python
+            return canalesSubtabla
         
     # Devuelve los datos de un canal mediante su nombre. Devuelve una lista con dos valores: la URL y la etiqueta asignada
     def getDatosCanal(self, nombreCanal):
@@ -317,6 +320,8 @@ if __name__=="__main__":
     objetoDF.eliminarCanal('Quiero Cupcakes')
     print(objetoDF.tabla)
     print(objetoDF.listaCanales)
+
+    print(objetoDF.getCanalesEtiqueta("Salud"))
 
     mostrarDiccEtq(objetoDF.diccEtiquetas)
 
