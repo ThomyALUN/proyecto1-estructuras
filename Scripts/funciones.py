@@ -24,6 +24,9 @@ def archivoAccesible(ruta):
 
 # Sirve para mostrar por consola el diccionario de las etiquetas más fácilmente
 def mostrarDiccEtq(dicc):
-    for etiqueta in dicc.keys():
-        subtabla=dicc[etiqueta]
-        print(f"La subtabla de la etiqueta {etiqueta} es:\n{subtabla}\n")
+    if dicc.keys():
+        for etiqueta in dicc.keys():
+            subtabla=dicc[etiqueta]
+            print(f"La subtabla de la etiqueta {etiqueta} es:\n{subtabla}\n")
+    else:
+        print({})

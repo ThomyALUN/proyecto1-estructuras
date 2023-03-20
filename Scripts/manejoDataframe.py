@@ -6,10 +6,11 @@ from funciones import *
 class ManejoDF():
 
     def __init__(self, ruta):
-        self.leerCSV(ruta)          # Se lee el archivo CSV
         self.listaEtiquetas=[]      # Se inicia una lista donde se almacena el nombre de todas las etiquetas creadas
         self.diccEtiquetas={}       # Se inicia un diccionario donde se almacenan todas las etiquetas y sus canales asociados. key: nombre de la etiqueta, value: sublista de canales
         self.listaCanales=[]        # Se inicia una lista donde se almacena el nombre de todos los canales registrados
+        self.leerCSV(ruta)          # Se lee el archivo CSV
+
 
     # Lee el archivo CSV
     def leerCSV(self, ruta):    
@@ -38,7 +39,16 @@ class ManejoDF():
             elif primeraColumna[:4]=="http" and len(df.columns)==3:     
                 # Se comprueba si el archivo ya tiene las clasificaciones de los canales, en caso de ser así se asume que es un archivo con etiquetas por lo cual se procede a una precarga
                 tipo=2 
-                raise NotImplementedError("La carga de archivos ya modificados aún no esta implementada")
+                df=df.fillna(value=0)
+                nombreColEtiqueta=df.columns[2]
+                df[nombreColEtiqueta].replace(0, None, inplace=True)
+                self.listaEtiquetas=df[nombreColEtiqueta].unique()          # Se devuelve un arreglo de numpy con el nombre de las etiquetas
+                self.listaEtiquetas=list(self.listaEtiquetas)               # Se transforma en una lista
+                self.listaEtiquetas.remove(None)                            # Se elimina el valor nulo/por defecto de las etiquetas de la lista con el nombre de las etiquetas
+                for etiqueta in self.listaEtiquetas:
+                    # Se buscan todos los canales que tengan una etiqueta determinada y se introducen al diccionario de etiquetas
+                    miniDF=df[df[nombreColEtiqueta]==etiqueta]
+                    self.diccEtiquetas[etiqueta]=miniDF
             else:                                                       
                 # Se detecta si el archivo no presenta errores durante su interacción pero su formato es inválido
                 mensaje=f"{ruta} es un archivo que no tiene un formato válido"
@@ -68,10 +78,10 @@ class ManejoDF():
             return mensaje
 
     # Exporta el archivo CSV resultante
-    def crearCSV(self):
+    def crearCSV(self, ruta="archivosCSV/canalesClasificados.csv"):
         #Se intenta exportar el archivo
         try:
-            self.tabla.to_csv("canalesClasificados.csv", index=False)
+            self.tabla.to_csv(ruta, index=False)
         except Exception as error:
             #En caso de que no funciona la exportación, se reporta el error al usuario
             return f"No se pudo guardar el archivo -> {error}"
@@ -241,7 +251,23 @@ class ManejoDF():
 
 
 if __name__=="__main__":
-    ruta="suscripciones.csv"
+
+    """
+    ruta="archivosCSV/canalesClasificados.csv"
+    valido=archivoAccesible(ruta)
+    if valido:
+        print("El archivo es accesible")
+    else:
+        exit()
+    
+    objetoDF=ManejoDF(ruta)
+    print(objetoDF.listaCanales)
+    print(objetoDF.tabla)
+    print(objetoDF.listaEtiquetas)
+    mostrarDiccEtq(objetoDF.diccEtiquetas)
+    """
+
+    ruta="archivosCSV/suscripciones.csv"
     valido=archivoAccesible(ruta)
     if valido:
         print("El archivo es accesible")
@@ -264,7 +290,7 @@ if __name__=="__main__":
     objetoDF.crearEtiqueta('salud')
     print(objetoDF.listaEtiquetas)
 
-    objetoDF.clasificarCanal('salud', 'Quiero Cupcakes')
+    print(objetoDF.clasificarCanal('salud', 'Quiero Cupcakes'))
     mostrarDiccEtq(objetoDF.diccEtiquetas)
 
     objetoDF.clasificarCanal('salud', 'Yuya')    
