@@ -237,7 +237,7 @@ color:white;
      <string>ELIMINAR</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="BVer">
+   <widget class="QPushButton" name="BConsultar">
     <property name="geometry">
      <rect>
       <x>640</x>
@@ -250,7 +250,7 @@ color:white;
      <cursorShape>PointingHandCursor</cursorShape>
     </property>
     <property name="styleSheet">
-     <string notr="true">QPushButton#BVer{
+     <string notr="true">QPushButton#BConsultar{
 background-color: rgb(52, 107, 98);
 background-color: rgb(57, 57, 57);
 font: 87 10pt &quot;Arial Black&quot;;
