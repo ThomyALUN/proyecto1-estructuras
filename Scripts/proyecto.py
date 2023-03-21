@@ -361,6 +361,7 @@ class Confirmacion(QDialog):
 
     def ocultar(self):
         self.close()
+    
 
 
 class ModificarEtiquetas(QDialog):
@@ -891,6 +892,7 @@ class ExportarArchivo(QMainWindow):
         self.min_3.clicked.connect(self.minimizar)
         self.frame_3.mouseMoveEvent = self.moveWindow
         self.BExportar.clicked.connect(self.exportarArchivo)
+        self.BAtras.clicked.connect(self.mostrarVentana3)
         self.controladorDf = controladorDf
         
         
@@ -913,6 +915,14 @@ class ExportarArchivo(QMainWindow):
     
     def minimizar(self):        
         widget.showMinimized()
+        
+    def mostrarVentana3(self):
+        self.ventana3 = Ventana3(self.controladorDf)
+        self.ventana3.raise_()
+        self.ventana3.setWindowFlag(QtCore.Qt.FramelessWindowHint)
+        self.ventana3.setAttribute(QtCore.Qt.WA_TranslucentBackground)
+        self.ventana3.show()
+        self.close()
 
     def exportarArchivo(self):
         #Navegador de archivos
@@ -920,9 +930,19 @@ class ExportarArchivo(QMainWindow):
         if file_path:
             nombre_archivo = "CanalesClasificados.csv"
             ruta_guardado = os.path.join(file_path, nombre_archivo)
-            self.controladorDf.crearCSV(ruta_guardado)
+            mensaje = self.controladorDf.crearCSV(ruta_guardado)
+            if mensaje != None:
+                self.advertencia = Advertencia(mensaje)
+                self.advertencia.show()
+            else:
+                mensaje = "            ¡¡ARCHIVO EXPORTADO!!" 
+                self.confirmacion = Confirmacion(mensaje)
+                self.confirmacion.show()
+        else:
+            mensaje = "No se seleccionó ninguna carpeta"
+            self.advertencia = Advertencia(mensaje) 
+            self.advertencia.show()
             
-        
         
 
 if __name__ == '__main__':
