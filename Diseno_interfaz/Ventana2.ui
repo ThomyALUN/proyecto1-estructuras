@@ -6,34 +6,34 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1023</width>
-    <height>545</height>
+    <width>1022</width>
+    <height>567</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>MainWindow</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="QWidget" name="widget_2" native="true">
+   <widget class="QWidget" name="widget_3" native="true">
     <property name="geometry">
      <rect>
       <x>10</x>
       <y>10</y>
       <width>1008</width>
-      <height>522</height>
+      <height>521</height>
      </rect>
     </property>
     <property name="cursor">
      <cursorShape>ArrowCursor</cursorShape>
     </property>
     <property name="styleSheet">
-     <string notr="true">QWidget#widget_2{
+     <string notr="true">QWidget#widget_3{
 
 background-color: rgb(6, 6, 6);
 border-radius:20px;
 }</string>
     </property>
-    <widget class="QFrame" name="frame_2">
+    <widget class="QFrame" name="frame_3">
      <property name="geometry">
       <rect>
        <x>0</x>
@@ -43,7 +43,7 @@ border-radius:20px;
       </rect>
      </property>
      <property name="styleSheet">
-      <string notr="true">QFrame#frame_2{
+      <string notr="true">QFrame#frame_3{
 	background-color: rgb(6, 6, 6);
 border-top-left-radius:20px;
 border-top-right-radius:20px;
@@ -56,7 +56,7 @@ border-top-right-radius:20px;
      <property name="frameShadow">
       <enum>QFrame::Raised</enum>
      </property>
-     <widget class="QPushButton" name="min_2">
+     <widget class="QPushButton" name="min_3">
       <property name="geometry">
        <rect>
         <x>910</x>
@@ -69,7 +69,7 @@ border-top-right-radius:20px;
        <cursorShape>PointingHandCursor</cursorShape>
       </property>
       <property name="styleSheet">
-       <string notr="true">QPushButton#min_2{
+       <string notr="true">QPushButton#min_3{
 	background-color: rgb(208, 208, 208);
 font: 16pt &quot;MS Shell Dlg 2&quot;;
 border-radius:6px;
@@ -82,7 +82,7 @@ border: 1px solid black;
        <string>-</string>
       </property>
      </widget>
-     <widget class="QPushButton" name="cerrar_2">
+     <widget class="QPushButton" name="cerrar_3">
       <property name="geometry">
        <rect>
         <x>960</x>
@@ -95,7 +95,7 @@ border: 1px solid black;
        <cursorShape>PointingHandCursor</cursorShape>
       </property>
       <property name="styleSheet">
-       <string notr="true">QPushButton#cerrar_2{
+       <string notr="true">QPushButton#cerrar_3{
 
 background-color: rgb(255, 0, 0);
 border-radius:6px;
@@ -108,7 +108,7 @@ font: 11pt &quot;MS Shell Dlg 2&quot;;
        <string>x</string>
       </property>
      </widget>
-     <widget class="QLabel" name="label_3">
+     <widget class="QLabel" name="label_4">
       <property name="geometry">
        <rect>
         <x>20</x>
@@ -144,11 +144,11 @@ font: 70 15pt &quot;Rockwell Extra Bold&quot;;</string>
       </property>
      </widget>
     </widget>
-    <widget class="QPushButton" name="BSubir">
+    <widget class="QPushButton" name="BCrear">
      <property name="geometry">
       <rect>
        <x>200</x>
-       <y>120</y>
+       <y>130</y>
        <width>241</width>
        <height>101</height>
       </rect>
@@ -157,7 +157,7 @@ font: 70 15pt &quot;Rockwell Extra Bold&quot;;</string>
       <cursorShape>PointingHandCursor</cursorShape>
      </property>
      <property name="styleSheet">
-      <string notr="true">QPushButton#BSubir{
+      <string notr="true">QPushButton#BCrear{
 
 background-color: rgb(57, 57, 57);
 
@@ -191,8 +191,8 @@ color:white;
      <property name="geometry">
       <rect>
        <x>540</x>
-       <y>120</y>
-       <width>251</width>
+       <y>130</y>
+       <width>241</width>
        <height>101</height>
       </rect>
      </property>
@@ -216,7 +216,7 @@ color:white;
      <property name="geometry">
       <rect>
        <x>200</x>
-       <y>300</y>
+       <y>310</y>
        <width>241</width>
        <height>101</height>
       </rect>
@@ -242,7 +242,7 @@ color:white;
      <property name="geometry">
       <rect>
        <x>540</x>
-       <y>300</y>
+       <y>310</y>
        <width>241</width>
        <height>101</height>
       </rect>
@@ -261,7 +261,47 @@ color:white;
 }</string>
      </property>
      <property name="text">
-      <string>VER</string>
+      <string>CONSULTAR</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_3">
+     <property name="geometry">
+      <rect>
+       <x>360</x>
+       <y>30</y>
+       <width>271</width>
+       <height>71</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">font: 18pt &quot;Lucida Console&quot;;
+
+color: rgb(189, 189, 189);
+;
+font: 70 30pt &quot;Rockwell Extra Bold&quot;;</string>
+     </property>
+     <property name="text">
+      <string>ETIQUETAS</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="BSiguiente">
+     <property name="geometry">
+      <rect>
+       <x>910</x>
+       <y>240</y>
+       <width>51</width>
+       <height>51</height>
+      </rect>
+     </property>
+     <property name="cursor">
+      <cursorShape>PointingHandCursor</cursorShape>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border-image: url(:/Iconos/derecha.png);
+border-image: url(:/Iconos/proximo (1).png);</string>
+     </property>
+     <property name="text">
+      <string/>
      </property>
     </widget>
    </widget>
@@ -269,7 +309,7 @@ color:white;
   <widget class="QStatusBar" name="statusbar"/>
  </widget>
  <resources>
-  <include location="imagen.qrc"/>
+  <include location="../Multimedia/imagen.qrc"/>
  </resources>
  <connections/>
 </ui>

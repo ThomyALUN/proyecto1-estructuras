@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>1026</width>
-    <height>560</height>
+    <height>557</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -112,7 +112,7 @@ font: 11pt &quot;MS Shell Dlg 2&quot;;
          </rect>
         </property>
         <property name="styleSheet">
-         <string notr="true">border-image: url(:/icono youtube/Icono youtube.png);</string>
+         <string notr="true">border-image: url(:/Iconos/Icono youtube.png);</string>
         </property>
         <property name="text">
          <string/>
@@ -268,10 +268,10 @@ p, li { white-space: pre-wrap; }
       <widget class="QWidget" name="widget" native="true">
        <property name="geometry">
         <rect>
-         <x>460</x>
-         <y>70</y>
-         <width>411</width>
-         <height>361</height>
+         <x>430</x>
+         <y>50</y>
+         <width>521</width>
+         <height>381</height>
         </rect>
        </property>
        <property name="styleSheet">
@@ -311,7 +311,7 @@ color:white;
   <widget class="QStatusBar" name="statusbar"/>
  </widget>
  <resources>
-  <include location="imagen.qrc"/>
+  <include location="../Imagenes y video/imagen.qrc"/>
  </resources>
  <connections/>
 </ui>
