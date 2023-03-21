@@ -566,8 +566,11 @@ class RegistrarCanal(QDialog):
         self.setAttribute(QtCore.Qt.WA_TranslucentBackground)
         self.controladorDf = controladorDf
         self.BAceptar.clicked.connect(self.registrarCanal)
+        self.etiquetas = self.controladorDf.getListaEtiquetas()
         self.controladorVentana3 = controladorVentana3
-             
+        for etiqueta in self.etiquetas:
+            self.comboBox.addItem(etiqueta)
+        self.comboBox.setCurrentIndex(0)         
     def moveWindow(self,e):
         if e.buttons() == Qt.LeftButton:
             self.move(self.pos()+e.globalPos()-self.clickPosition)
@@ -590,12 +593,13 @@ class RegistrarCanal(QDialog):
     def registrarCanal(self):
         self.canal = self.lineEdit.text()
         self.url = self.lineEdit_2.text()
-        self.etiqueta = self.lineEdit_3.text()
+        self.etiqueta = self.comboBox.currentText()
         if self.etiqueta == "Opcional":
             self.etiqueta = None
         mensaje = self.controladorDf.registrarCanal(self.url,self.canal,self.etiqueta)
         self.lineEdit.clear()
         self.lineEdit_2.clear()
+        self.comboBox.setCurrentIndex(0)
         print(mensaje)
         if mensaje != None:
             self.advertencia = Advertencia(mensaje)

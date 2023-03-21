@@ -320,28 +320,33 @@ font: 70 15pt &quot;Rockwell Extra Bold&quot;;</string>
      <string>ETIQUETA</string>
     </property>
    </widget>
-   <widget class="QLineEdit" name="lineEdit_3">
+   <widget class="QComboBox" name="comboBox">
     <property name="geometry">
      <rect>
       <x>190</x>
       <y>140</y>
-      <width>113</width>
+      <width>111</width>
       <height>20</height>
      </rect>
+    </property>
+    <property name="cursor">
+     <cursorShape>PointingHandCursor</cursorShape>
     </property>
     <property name="styleSheet">
      <string notr="true">background-color: rgb(25, 25, 25);
 border-radius:6px;
 color: white</string>
     </property>
-    <property name="text">
-     <string>Opcional</string>
-    </property>
+    <item>
+     <property name="text">
+      <string>Opcional</string>
+     </property>
+    </item>
    </widget>
   </widget>
  </widget>
  <resources>
-  <include location="../Imagenes y video/imagen.qrc"/>
+  <include location="../Multimedia/imagen.qrc"/>
  </resources>
  <connections/>
 </ui>
