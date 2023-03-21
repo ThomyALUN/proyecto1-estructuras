@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Inicio</class>
+ <widget class="QMainWindow" name="Inicio">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1057</width>
+    <height>558</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <widget class="QWidget" name="widget" native="true">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>10</y>
+      <width>1001</width>
+      <height>521</height>
+     </rect>
+    </property>
+    <property name="cursor">
+     <cursorShape>ArrowCursor</cursorShape>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QWidget#widget{
+background-color: rgb(16, 16, 16);
+	background-color: rgb(6, 6, 6);
+border-radius:20px;
+}</string>
+    </property>
+    <widget class="QFrame" name="frame">
+     <property name="geometry">
+      <rect>
+       <x>0</x>
+       <y>0</y>
+       <width>1001</width>
+       <height>51</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QFrame#frame{
+	background-color: rgb(6, 6, 6);
+border-top-left-radius:20px;
+border-top-right-radius:20px;
+
+}</string>
+     </property>
+     <property name="frameShape">
+      <enum>QFrame::StyledPanel</enum>
+     </property>
+     <property name="frameShadow">
+      <enum>QFrame::Raised</enum>
+     </property>
+     <widget class="QPushButton" name="min">
+      <property name="geometry">
+       <rect>
+        <x>900</x>
+        <y>10</y>
+        <width>41</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="cursor">
+       <cursorShape>PointingHandCursor</cursorShape>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton#min{
+	background-color: rgb(208, 208, 208);
+font: 16pt &quot;MS Shell Dlg 2&quot;;
+border-radius:6px;
+border: 1px solid black;
+
+
+}</string>
+      </property>
+      <property name="text">
+       <string>-</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="cerrar">
+      <property name="geometry">
+       <rect>
+        <x>950</x>
+        <y>10</y>
+        <width>41</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="cursor">
+       <cursorShape>PointingHandCursor</cursorShape>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton#cerrar{
+background-color: rgb(255, 0, 0);
+border-radius:6px;
+border: 1px solid black;
+font: 11pt &quot;MS Shell Dlg 2&quot;;
+
+}</string>
+      </property>
+      <property name="text">
+       <string>x</string>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QPushButton" name="BIniciar">
+     <property name="geometry">
+      <rect>
+       <x>440</x>
+       <y>380</y>
+       <width>151</width>
+       <height>61</height>
+      </rect>
+     </property>
+     <property name="cursor">
+      <cursorShape>PointingHandCursor</cursorShape>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QPushButton#BIniciar{
+background-color: rgb(52, 107, 98);
+background-color: rgb(57, 57, 57);
+font: 87 10pt &quot;Arial Black&quot;;
+border-radius:15px;
+font: 8pt &quot;Gill Sans Ultra Bold&quot;;
+color:white;
+}</string>
+     </property>
+     <property name="text">
+      <string>INICIAR</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_2">
+     <property name="geometry">
+      <rect>
+       <x>390</x>
+       <y>320</y>
+       <width>311</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">font: 14pt &quot;Lucida Console&quot;;
+color:gray;
+font: 90 20pt &quot;Rockwell Extra Bold&quot;;</string>
+     </property>
+     <property name="text">
+      <string>CLASIFICADOR</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_3">
+     <property name="geometry">
+      <rect>
+       <x>400</x>
+       <y>120</y>
+       <width>221</width>
+       <height>211</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border-image: url(:/Iconos/Icono youtube.png);</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+   </widget>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+ </widget>
+ <resources>
+  <include location="../Imagenes y video/imagen.qrc"/>
+ </resources>
+ <connections/>
+</ui>
