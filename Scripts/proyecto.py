@@ -13,10 +13,11 @@ from PyQt5.QtCore import QUrl
 from PyQt5.QtGui import QDesktopServices
 import cv2
 
+
 class Window1(QMainWindow):
     def __init__(self):
         super().__init__()
-        loadUi("Diseño Interfaz\DiseñoInicio.ui", self)
+        loadUi("Diseno_interfaz\DiseñoInicio.ui", self)
         self.cerrar.clicked.connect(self.exit)
         self.min.clicked.connect(self.minimizar)
         self.setWindowTitle('Ventana Inicio')
@@ -50,14 +51,13 @@ class Window1(QMainWindow):
         self.ventana1.setWindowFlag(QtCore.Qt.FramelessWindowHint)
         self.ventana1.setAttribute(QtCore.Qt.WA_TranslucentBackground)
         self.ventana1.show()
-        
         self.close()
 
 
 class Ventana1(QMainWindow):
     def __init__(self):
         super().__init__()
-        loadUi("Diseño Interfaz\Ventana1.ui", self)
+        loadUi("Diseno_interfaz\Ventana1.ui", self)
         self.setWindowTitle('Ventana 1')
         self.cerrar_2.clicked.connect(window1.exit)
         self.min_2.clicked.connect(self.minimizar)
@@ -77,7 +77,7 @@ class Ventana1(QMainWindow):
         #Nombre ventana
         self.videoWidget.setWindowTitle("Tutorial")
         self.player = QMediaPlayer(self)
-        media = QMediaContent(QUrl.fromLocalFile("Imagenes y video\Tutorial Google Takeout.mp4"))
+        media = QMediaContent(QUrl.fromLocalFile("Multimedia\Tutorial Google Takeout.mp4"))
         self.player.setMedia(media)
         self.player.setVideoOutput(self.videoWidget)
         
@@ -137,8 +137,7 @@ class Ventana1(QMainWindow):
 class Ventana2(QMainWindow):
     def __init__(self,controladorDf):
         super().__init__()
-        loadUi("Diseño Interfaz\Ventana2.ui", self)
-        self.setWindowTitle('Ventana 2')
+        loadUi("Diseno_interfaz\Ventana2.ui", self)
         self.cerrar_3.clicked.connect(window1.exit)
         self.min_3.clicked.connect(self.minimizar)
         self.frame_3.mouseMoveEvent = self.moveWindow
@@ -187,11 +186,12 @@ class Ventana2(QMainWindow):
 class Ventana3(QMainWindow):
     def __init__(self,controladorDf):
         super().__init__()
-        loadUi("Diseño Interfaz\Ventana3.ui", self)
+        loadUi("Diseno_interfaz\Ventana3.ui", self)
         self.cerrar_3.clicked.connect(window1.exit)
         self.min_3.clicked.connect(self.minimizar)
         self.frame_3.mouseMoveEvent = self.moveWindow
         self.BAtras.clicked.connect(self.mostrarVentana2)
+        self.BSiguiente.clicked.connect(self.mostrarVentana4)
         self.BClasificar.clicked.connect(self.clasificarCanal)
         self.BRegistrar.clicked.connect(self.registrarCanal)
         self.BEliminar.clicked.connect(self.eliminarCanal)
@@ -222,6 +222,15 @@ class Ventana3(QMainWindow):
         self.ventana2.setAttribute(QtCore.Qt.WA_TranslucentBackground)
         self.ventana2.show()
         self.close()
+        
+    def mostrarVentana4(self):
+        self.ventana4 = ExportarArchivo(self.controladorDf)
+        self.ventana4.raise_()
+        self.ventana4.setWindowFlag(QtCore.Qt.FramelessWindowHint)
+        self.ventana4.setAttribute(QtCore.Qt.WA_TranslucentBackground)
+        self.ventana4.show()
+        self.close()
+    
     
     def actualizarListaCanales(self):
         self.listWidget.clear()
@@ -257,7 +266,7 @@ class Ventana3(QMainWindow):
 class CrearEtiqueta(QDialog):
     def __init__(self,controladorDf):
         super(CrearEtiqueta,self).__init__()
-        loadUi("Diseño Interfaz\CrearEtiqueta.ui", self)
+        loadUi("Diseno_interfaz\CrearEtiqueta.ui", self)
         self.cerrar_4.clicked.connect(self.ocultar)
         self.min_4.clicked.connect(self.minimizar)
         self.frame_4.mouseMoveEvent = self.moveWindow
@@ -303,7 +312,7 @@ class CrearEtiqueta(QDialog):
 class Advertencia(QDialog):
     def __init__(self,mensaje):
         super(Advertencia,self).__init__()
-        loadUi("Diseño Interfaz\Advertencia.ui", self)
+        loadUi("Diseno_interfaz\Advertencia.ui", self)
         self.cerrar_5.clicked.connect(self.ocultar)
         self.setWindowFlag(Qt.FramelessWindowHint)
         self.setAttribute(QtCore.Qt.WA_TranslucentBackground)
@@ -330,7 +339,7 @@ class Advertencia(QDialog):
 class Confirmacion(QDialog):
     def __init__(self,mensaje):
         super(Confirmacion,self).__init__()
-        loadUi("Diseño Interfaz\Confirmacion.ui", self)
+        loadUi("Diseno_interfaz\Confirmacion.ui", self)
         self.cerrar_6.clicked.connect(self.ocultar)
         self.setWindowFlag(Qt.FramelessWindowHint)
         self.setAttribute(QtCore.Qt.WA_TranslucentBackground)
@@ -357,7 +366,7 @@ class Confirmacion(QDialog):
 class ModificarEtiquetas(QDialog):
     def __init__(self,controladorDf):
         super(ModificarEtiquetas,self).__init__()
-        loadUi("Diseño Interfaz\ModificarEtiquetas.ui", self)
+        loadUi("Diseno_interfaz\ModificarEtiquetas.ui", self)
         self.cerrar_4.clicked.connect(self.ocultar)
         self.min_4.clicked.connect(self.minimizar)
         self.frame_4.mouseMoveEvent = self.moveWindow
@@ -405,7 +414,7 @@ class ModificarEtiquetas(QDialog):
 class EliminarEtiqueta(QDialog):
     def __init__(self,controladorDf):
         super(EliminarEtiqueta,self).__init__()
-        loadUi("Diseño Interfaz\EliminarEtiqueta.ui", self)
+        loadUi("Diseno_interfaz\EliminarEtiqueta.ui", self)
         self.cerrar_4.clicked.connect(self.ocultar)
         self.min_4.clicked.connect(self.minimizar)
         self.frame_4.mouseMoveEvent = self.moveWindow
@@ -450,7 +459,7 @@ class VerEtiquetas(QDialog):
 
     def __init__(self,controladorDf):
         super(VerEtiquetas,self).__init__()
-        loadUi("Diseño Interfaz\VerEtiquetas.ui", self)
+        loadUi("Diseno_interfaz\VerEtiquetas.ui", self)
         self.cerrar_4.clicked.connect(self.ocultar)
         self.min_4.clicked.connect(self.minimizar)
         self.frame_4.mouseMoveEvent = self.moveWindow
@@ -491,12 +500,11 @@ class VerEtiquetas(QDialog):
         VerCanales(self.controladorDf, etiqueta).show()
     
 
-
 class ClasificarCanal(QDialog):
 
     def __init__(self,controladorDf):
         super(ClasificarCanal,self).__init__()
-        loadUi("Diseño Interfaz\ClasificarCanal.ui", self)
+        loadUi("Diseno_interfaz\ClasificarCanal.ui", self)
         self.cerrar_4.clicked.connect(self.ocultar)
         self.min_4.clicked.connect(self.minimizar)
         self.frame_4.mouseMoveEvent = self.moveWindow
@@ -549,7 +557,7 @@ class RegistrarCanal(QDialog):
     
     def __init__(self,controladorDf, controladorVentana3):
         super(RegistrarCanal,self).__init__()
-        loadUi("Diseño Interfaz\RegistrarCanal.ui", self)
+        loadUi("Diseno_interfaz\RegistrarCanal.ui", self)
         self.cerrar_4.clicked.connect(self.ocultar)
         self.min_4.clicked.connect(self.minimizar)
         self.frame_4.mouseMoveEvent = self.moveWindow
@@ -602,7 +610,7 @@ class EliminarCanal(QDialog):
     
     def __init__(self,controladorDf,controladorVentana3):
         super(EliminarCanal,self).__init__()
-        loadUi("Diseño Interfaz\EliminarCanal.ui", self)
+        loadUi("Diseno_interfaz\EliminarCanal.ui", self)
         self.cerrar_4.clicked.connect(self.ocultar)
         self.min_4.clicked.connect(self.minimizar)
         self.frame_4.mouseMoveEvent = self.moveWindow
@@ -650,7 +658,7 @@ class ModificarEtqCanal(QDialog):
     
     def __init__(self,controladorDf):
         super(ModificarEtqCanal,self).__init__()
-        loadUi("Diseño Interfaz\ModificarEtqCanal.ui", self)
+        loadUi("Diseno_interfaz\ModificarEtqCanal.ui", self)
         self.cerrar_4.clicked.connect(self.ocultar)
         self.min_4.clicked.connect(self.minimizar)
         self.frame_4.mouseMoveEvent = self.moveWindow
@@ -703,7 +711,7 @@ class QuitarEtqCanal(QDialog):
     
     def __init__(self,controladorDf):
         super(QuitarEtqCanal,self).__init__()
-        loadUi("Diseño Interfaz\QuitarEtqCanal.ui", self)
+        loadUi("Diseno_interfaz\QuitarEtqCanal.ui", self)
         self.cerrar_4.clicked.connect(self.ocultar)
         self.min_4.clicked.connect(self.minimizar)
         self.frame_4.mouseMoveEvent = self.moveWindow
@@ -749,7 +757,7 @@ class VerDatos(QDialog):
     
     def __init__(self,controladorDf,canal):
         super(VerDatos,self).__init__()
-        loadUi("Diseño Interfaz\VerDatos.ui", self)
+        loadUi("Diseno_interfaz\VerDatos.ui", self)
         self.cerrar_4.clicked.connect(self.ocultar)
         self.min_4.clicked.connect(self.minimizar)
         self.frame_4.mouseMoveEvent = self.moveWindow
@@ -796,7 +804,7 @@ class VerCanales(QDialog):
     
     def __init__(self,controladorDf,etiqueta):
         super(VerCanales,self).__init__()
-        loadUi("Diseño Interfaz\VerCanales.ui", self)
+        loadUi("Diseno_interfaz\VerCanales.ui", self)
         self.cerrar_4.clicked.connect(self.ocultar)
         self.min_4.clicked.connect(self.minimizar)
         self.frame_4.mouseMoveEvent = self.moveWindow
@@ -805,7 +813,9 @@ class VerCanales(QDialog):
         self.controladorDf = controladorDf
         self.etiqueta = etiqueta
         self.verCanales()
+        self.listWidget.itemClicked.connect(self.item_clicked)       
         
+               
     def moveWindow(self,e):
         if e.buttons() == Qt.LeftButton:
             self.move(self.pos()+e.globalPos()-self.clickPosition)
@@ -826,15 +836,22 @@ class VerCanales(QDialog):
         self.showMinimized()
 
     def verCanales(self):
-        canales = self.controladorDf.getCanalesEtiqueta(self.etiqueta) 
-        print(canales)
-
+        self.canales = self.controladorDf.getCanalesEtiqueta(self.etiqueta) 
+        for canal in self.canales:
+            self.listWidget.addItem(canal)
+        
+    def item_clicked(self, item):
+        # Obtener el texto del elemento seleccionado
+        canal = item.text()
+        print(canal)
+        VerDatos(self.controladorDf, canal).show()            
+        
 
 class ConsultarEtiquetas(QDialog):
     
     def __init__(self,controladorDf):
         super(ConsultarEtiquetas,self).__init__()
-        loadUi("Diseño Interfaz\ConsultarEtiquetas.ui", self)
+        loadUi("Diseno_interfaz\ConsultarEtiquetas.ui", self)
         self.cerrar_4.clicked.connect(self.ocultar)
         self.min_4.clicked.connect(self.minimizar)
         self.frame_4.mouseMoveEvent = self.moveWindow
@@ -865,6 +882,48 @@ class ConsultarEtiquetas(QDialog):
     def minimizar(self):        
         self.showMinimized()
 
+
+class ExportarArchivo(QMainWindow):
+    def __init__(self,controladorDf):
+        super(ExportarArchivo,self).__init__()
+        loadUi("Diseno_interfaz\ExportarArchivo.ui", self)
+        self.cerrar_3.clicked.connect(self.exit)
+        self.min_3.clicked.connect(self.minimizar)
+        self.frame_3.mouseMoveEvent = self.moveWindow
+        self.BExportar.clicked.connect(self.exportarArchivo)
+        self.controladorDf = controladorDf
+        
+        
+    def moveWindow(self,e):
+        if e.buttons() == Qt.LeftButton:
+            self.move(self.pos()+e.globalPos()-self.clickPosition)
+            self.clickPosition = e.globalPos()
+            e.accept()
+            
+    def mousePressEvent(self, event):
+        self.clickPosition = event.globalPos()        
+    
+    def keyPressEvent(self, qKeyEvent):
+        if qKeyEvent.key() == QtCore.Qt.Key_Return:
+            self.gui()
+
+    def exit(self):
+        app.exit()
+        sys.exit()   
+    
+    def minimizar(self):        
+        widget.showMinimized()
+
+    def exportarArchivo(self):
+        #Navegador de archivos
+        file_path = QFileDialog.getExistingDirectory(self, "Seleccionar carpeta donde guardar archivo")
+        if file_path:
+            nombre_archivo = "CanalesClasificados.csv"
+            ruta_guardado = os.path.join(file_path, nombre_archivo)
+            self.controladorDf.crearCSV(ruta_guardado)
+            
+        
+        
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)

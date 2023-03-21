@@ -1,5 +1,8 @@
 <RCC>
   <qresource prefix="Iconos">
+    <file>carpeta.png</file>
+    <file>subir-archivo.png</file>
+    <file>subir.png</file>
     <file>proximo.png</file>
     <file>derecha.png</file>
     <file>flecha-hacia-la-derecha-en-un-circulo.png</file>
