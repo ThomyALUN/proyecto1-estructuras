@@ -261,7 +261,7 @@ color:white;
 }</string>
      </property>
      <property name="text">
-      <string>VER</string>
+      <string>CONSULTAR</string>
      </property>
     </widget>
     <widget class="QLabel" name="label_3">
@@ -309,7 +309,7 @@ border-image: url(:/Iconos/proximo (1).png);</string>
   <widget class="QStatusBar" name="statusbar"/>
  </widget>
  <resources>
-  <include location="../Imagenes y video/imagen.qrc"/>
+  <include location="../Multimedia/imagen.qrc"/>
  </resources>
  <connections/>
 </ui>
